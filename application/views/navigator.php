@@ -1,4 +1,3 @@
-<body>
 <nav>
 		<ul>
 			<li><a href="<?php echo base_url(); ?>index.php/tutorial/inicio">Inicio</a><li>
