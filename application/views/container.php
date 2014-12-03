@@ -1,5 +1,4 @@
-	<div id="central">
-	       
-	    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-	</div>
-</div><!-- /.container -->
+<div class="container-fluid" id="contenido">
+<!--  <div class="row-fluid">  -->
+   
+	    

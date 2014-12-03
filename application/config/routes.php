@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "GestProf";
+$route['default_controller'] = "Bienvenida";
 $route['404_override'] = '';
 
 
