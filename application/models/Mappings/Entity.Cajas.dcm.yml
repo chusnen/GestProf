@@ -1,0 +1,26 @@
+Entity\Cajas:
+    type: entity
+    table: cajas
+    fields:
+        idcaja:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: idCaja
+        fecha:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+    oneToOne:
+        idforma:
+            targetEntity: FormasPago
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idforma:
+                    referencedColumnName: idFormaPago
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

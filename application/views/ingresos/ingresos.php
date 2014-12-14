@@ -1,0 +1,3 @@
+<div id="centralregistro">
+
+</div>

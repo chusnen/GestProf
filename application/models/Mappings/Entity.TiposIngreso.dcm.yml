@@ -1,0 +1,19 @@
+Entity\TiposIngreso:
+    type: entity
+    table: tipos_ingreso
+    fields:
+        idtipoingreso:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: idTipoIngreso
+            generator:
+                strategy: IDENTITY
+        descripcion:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+            column: Descripcion
+    lifecycleCallbacks: {  }

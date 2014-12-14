@@ -1,0 +1,96 @@
+Entity\Users:
+    type: entity
+    table: users
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: true
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        ipAddress:
+            type: string
+            length: 15
+            fixed: false
+            nullable: false
+            column: ip_address
+        username:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+        password:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        salt:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        email:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+        activationCode:
+            type: string
+            length: 40
+            fixed: false
+            nullable: true
+            column: activation_code
+        forgottenPasswordCode:
+            type: string
+            length: 40
+            fixed: false
+            nullable: true
+            column: forgotten_password_code
+        forgottenPasswordTime:
+            type: integer
+            unsigned: true
+            nullable: true
+            column: forgotten_password_time
+        rememberCode:
+            type: string
+            length: 40
+            fixed: false
+            nullable: true
+            column: remember_code
+        createdOn:
+            type: integer
+            unsigned: true
+            nullable: false
+            column: created_on
+        lastLogin:
+            type: integer
+            unsigned: true
+            nullable: true
+            column: last_login
+        active:
+            type: boolean
+            nullable: true
+        firstName:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+            column: first_name
+        lastName:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+            column: last_name
+        company:
+            type: string
+            length: 100
+            fixed: false
+            nullable: true
+        phone:
+            type: string
+            length: 20
+            fixed: false
+            nullable: true
+    lifecycleCallbacks: {  }

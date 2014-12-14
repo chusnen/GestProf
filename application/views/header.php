@@ -11,9 +11,9 @@
     <title>Starter Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="/GestProf/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/GestProf/css/bootstrap-theme.min.css" rel="stylesheet">
+     <link href="/GestProf/css/bootstrap.css" rel="stylesheet">
      
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

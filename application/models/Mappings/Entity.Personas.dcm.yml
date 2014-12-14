@@ -1,0 +1,42 @@
+Entity\Personas:
+    type: entity
+    table: personas
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        nif:
+            type: string
+            length: 9
+            fixed: false
+            nullable: true
+        nombre:
+            type: string
+            length: 20
+            fixed: false
+            nullable: true
+        apellidos:
+            type: string
+            length: 20
+            fixed: false
+            nullable: true
+        telefono:
+            type: string
+            length: 9
+            fixed: false
+            nullable: true
+        direccion:
+            type: string
+            length: 30
+            fixed: false
+            nullable: true
+        fax:
+            type: string
+            length: 9
+            fixed: false
+            nullable: true
+    lifecycleCallbacks: {  }

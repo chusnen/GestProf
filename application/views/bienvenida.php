@@ -9,5 +9,5 @@
 <p> Si todavía no se ha registrado ¿a que espera?<p>
 <a href="<?php echo base_url();?>registro">Registro</a>
 <p>Si está registrado entre en su cuenta</p>
-<a href="<?php echo base_url(); ?>login">Login</a>
+<a href="<?php echo base_url(); ?>auth/login">Login</a>
 </div>
