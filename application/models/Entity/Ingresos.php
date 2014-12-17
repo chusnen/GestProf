@@ -11,6 +11,7 @@ class Ingresos
 {
     /**
      * @var integer
+     * @GeneratedValue(strategy="AUTO")
      */
     private $idingresos;
 

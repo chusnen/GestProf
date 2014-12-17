@@ -12,6 +12,7 @@ class Auth extends CI_Controller {
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
 		$this->lang->load('auth');
+
 	}
 
 	//redirect if needed, otherwise display the user list
@@ -59,6 +60,7 @@ class Auth extends CI_Controller {
 	//log the user in
 	function login()
 	{
+		//$data['usuario']='no loggin';
 		$this->data['title'] = "Login";
         $this->load->view('header');
         $this->load->view('container');
@@ -76,6 +78,10 @@ class Auth extends CI_Controller {
 			{
 				//if the login is successful
 				//redirect them back to the home page
+				//$data['usuario']=$this->input->post('identity');
+				//$this->session->set_flashdata($data['usuario'], $usuario=$this->input->post('identity'));
+				$this->session->set_userdata('usuario',$this->input->post('identity'));
+				//$this->config->set_item('variable',$usuario);
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
 				redirect('/', 'refresh');
 			}
@@ -83,6 +89,7 @@ class Auth extends CI_Controller {
 			{
 				//if the login was un-successful
 				//redirect them back to the login page
+				
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
 				redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
 			}

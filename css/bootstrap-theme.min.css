@@ -18,8 +18,8 @@
 	
 }
 #contenido{
-	padding-top: 60px;
-	min-height: 43em;	
+	/*padding-top: 60px;*/
+	min-height: 38em;	
 }
 #pie{
 	text-align: center;
@@ -41,3 +41,4 @@
 	text-align: left;
 	margin-left: 1em;
 }
+#login{float:right;}

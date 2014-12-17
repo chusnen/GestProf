@@ -13,13 +13,15 @@ Entity\DetallesFactura:
             fixed: false
             nullable: true
         cantidad:
-            type: string
-            length: 45
+            type: integer
             fixed: false
             nullable: true
         descuento:
-            type: string
-            length: 45
+            type: float
+            fixed: false
+            nullable: true
+        total:
+            type: float
             fixed: false
             nullable: true
     manyToOne:

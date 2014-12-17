@@ -11,7 +11,7 @@ class Users
 {
     /**
      * @var integer
-     *@GeneratedValue(strategy="AUTO")
+     * @GeneratedValue(strategy="AUTO")
      */
     private $id;
 

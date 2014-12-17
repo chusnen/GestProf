@@ -11,6 +11,7 @@ class Facturas
 {
     /**
      * @var integer
+     * @GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -23,6 +24,11 @@ class Facturas
      * @var \DateTime
      */
     private $fecha;
+
+    /**
+     * @var string
+     */
+    private $descripcion;
 
     /**
      * @var float
@@ -142,6 +148,29 @@ class Facturas
     public function getFecha()
     {
         return $this->fecha;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return Facturas
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+    
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
     }
 
     /**

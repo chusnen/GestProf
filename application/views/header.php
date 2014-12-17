@@ -22,8 +22,7 @@
     <![endif]-->
     </head>
     <body>
-    <div class="row-fluid">
-    	
+    <div class="row-fluid page-header">    	
 	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	        <div class="span12">
 	        	<div class="navbar-header">
@@ -32,25 +31,12 @@
 		            	<span class="icon-bar"></span>
 		            	<span class="icon-bar"></span>
 		           	 	<span class="icon-bar"></span>
-	          		</button>
-         		<a class="navbar-brand" href="<?php echo base_url();?>">GestProf</a>
+	          		</button>	          		
+         			<a class="navbar-brand" href="<?php echo base_url();?>">GestProf</a>
 	        	</div>
-	       		<div id="navbar" class="collapse navbar-collapse">
-	            	<ul class="nav navbar-nav">
-			            <li class="active"><a href="#">Home</a></li>
-			            <li><a href="#about">Ingresos</a></li>
-			            <li><a href="#contact">Gatos</a></li>
-			            <li><a href="#contact">Analisis</a></li>
-	          		</ul>
-	           	</div><!--/.nav-collapse -->
+	        	<div id="navbar" class="collapse navbar-collapse">	            	
+	          		<?php  if ($this->ion_auth->logged_in()) $this->load->view('login') ?>          		 
+	           	</div><!--/.nav-collapse -->	           	
 	        </div>
 	    </nav>
 	</div>
-
-
-   
-
-
-   
-
-

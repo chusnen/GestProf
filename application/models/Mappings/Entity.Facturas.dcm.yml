@@ -15,7 +15,12 @@ Entity\Facturas:
             nullable: false
         fecha:
             type: date
-            nullable: true
+            nullable: false
+        descripcion:
+            type: string
+            length: 60
+            fixed: false
+            nullable: false
         baseimponible:
             type: float
             nullable: true

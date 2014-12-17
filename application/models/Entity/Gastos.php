@@ -11,6 +11,7 @@ class Gastos
 {
     /**
      * @var integer
+     * @GeneratedValue(strategy="AUTO")
      */
     private $idgastos;
 

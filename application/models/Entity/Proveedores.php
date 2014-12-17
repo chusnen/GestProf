@@ -11,6 +11,7 @@ class Proveedores
 {
     /**
      * @var integer
+     * @GeneratedValue(strategy="AUTO")
      */
     private $idproveedores;
 

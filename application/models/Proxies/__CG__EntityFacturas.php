@@ -84,6 +84,18 @@ class Facturas extends \Entity\Facturas implements \Doctrine\ORM\Proxy\Proxy
         return parent::getFecha();
     }
 
+    public function setDescripcion($descripcion)
+    {
+        $this->__load();
+        return parent::setDescripcion($descripcion);
+    }
+
+    public function getDescripcion()
+    {
+        $this->__load();
+        return parent::getDescripcion();
+    }
+
     public function setBaseimponible($baseimponible)
     {
         $this->__load();
@@ -207,7 +219,7 @@ class Facturas extends \Entity\Facturas implements \Doctrine\ORM\Proxy\Proxy
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'numero', 'fecha', 'baseimponible', 'iva', 'irpf', 'total', 'rutapdf', 'tipo', 'idproveedores', 'idcliente', 'idprofesional', 'idcaja');
+        return array('__isInitialized__', 'id', 'numero', 'fecha','descripcion', 'baseimponible', 'iva', 'irpf', 'total', 'rutapdf', 'tipo', 'idproveedores', 'idcliente', 'idprofesional', 'idcaja');
     }
 
     public function __clone()

@@ -11,6 +11,7 @@ class DetallesFactura
 {
     /**
      * @var integer
+     * @GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -28,6 +29,11 @@ class DetallesFactura
      * @var string
      */
     private $descuento;
+
+     /**
+     * @var float
+     */
+    private $total;
 
     /**
      * @var \Entity\Facturas
@@ -130,6 +136,29 @@ class DetallesFactura
     public function getDescuento()
     {
         return $this->descuento;
+    }
+
+    /**
+     * Set total
+     *
+     * @param string $total
+     * @return DetallesFactura
+     */
+    public function setTotal($total)
+    {
+        $this->total = $total;
+    
+        return $this;
+    }
+
+    /**
+     * Get total
+     *
+     * @return string 
+     */
+    public function getTotal()
+    {
+        return $this->total;
     }
 
     /**

@@ -11,6 +11,7 @@ class Clientes
 {
     /**
      * @var integer
+     * @GeneratedValue(strategy="AUTO")
      */
     private $idcliente;
 

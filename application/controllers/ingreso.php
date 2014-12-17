@@ -1,22 +1,66 @@
 <?php
-class Registro extends CI_Controller {
+class Ingreso extends CI_Controller {
 	public function _construct(){
 		parent::__construct();
         //Cargo la libreria doctrine para poder usar la bd mapeada a objetos
 		$this->load->library('doctrine');
-        $this->load->library('bcrypt');
         //Cargo el helper form para trabajar con la ayuda de codeignier para formularios
 		$this->load->helper('form');
 	}
     function index(){
-      $this->load->view('header');
-     // $this->load->view('navigator');
-      $this->load->view('container'); 
-     // $this->load->view('content'); 
-      $this->load->view('Registro/registro');      
-      $this->load->view('footer');
+        // $personas=new Entity\Personas;
+        // $profesional=new Entity\Profesional;
+        $email=$this->session->userdata('identity');         
+        $repositorioUsers = $this->doctrine->em->getRepository('Entity\Users');
+        $usuarioAutentificado = $repositorioUsers->findOneByEmail($email);        
+        if(is_null($usuarioAutentificado)){
+             $this->load->view('header');        
+            $this->load->view('container');
+        //$this->load->view('navigator'); 
+        // $this->load->view('content'); 
+            $this->load->view('Ingreso/login');
+            $this->load->view('footer');            
+        }
+        else{
+            $idusuario=$usuarioAutentificado->getId();
+            $repositorioProfesional=$this->doctrine->em->getRepository('Entity\Profesional');
+            $profesional=$repositorioProfesional->findOneByLogin($idusuario);
+            $personas=$profesional->getIdpersonas();//obtengo el objeto personas
+            $repositorioFacturas=$this->doctrine->em->getRepository('Entity\Facturas');
+           
+            $facturas=$repositorioFacturas->findByIdprofesional($profesional->getIdprofesional());
+            $data=array('nombre'=>$personas->getNombre(),
+                'apellidos'=>$personas->getApellidos(),
+                'nif'=>$personas->getNif(),
+                'actividad'=>$profesional->getActividad(),
+                'facturas'=>$facturas);
+
+
+            $this->load->view('header');            
+            $this->load->view('container');
+            $this->load->view('navigator'); 
+            // $this->load->view('content');
+            $this->load->view('Ingreso/ingreso',$data);
+            $this->load->view('footer');
+        }
     }
-    public function create(){
+    public function factura(){ 
+        $this->load->view('header');            
+        $this->load->view('container');
+        $this->load->view('navigator'); 
+        // $this->load->view('content');
+        $this->load->view('Ingreso/factura');
+        $this->load->view('footer');
+    }
+    public function detalle(){ 
+        $this->load->view('header');            
+        $this->load->view('container');
+        $this->load->view('navigator'); 
+        // $this->load->view('content');
+        $this->load->view('Ingreso/detalle');
+        $this->load->view('footer');
+    }
+    /*public function create(){
         //Compruebo que los datos del formulario se han enviado por post
    		if(isset($_POST['enviar']))
         {
@@ -24,8 +68,6 @@ class Registro extends CI_Controller {
             //required=campo obligatorio||valid_email=validar correo||xss_clean=evitamos inyecciones de código
             $this->form_validation->set_rules('usuario', 'Usuario', 'required|xss_clean');
             $this->form_validation->set_rules('password', 'Contraseña', 'required|xss_clean');
-            $this->form_validation->set_rules('password', 'Contraseña', 'callback_password_check');
-            $this->form_validation->set_rules('confirmarpassword', 'Confirmar Contraseña', 'callback_password_check');
             $this->form_validation->set_rules('confirmarpassword', 'Confirmar Contraseña', 'callback_confirmarpassword_check');
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email|xss_clean');
             $this->form_validation->set_rules('email', 'Email', 'callback_email_check');
@@ -47,10 +89,7 @@ class Registro extends CI_Controller {
             else{                
          		$users=new Entity\Users;
                 $users->setUsername($this->input->post('usuario'));
-                //codificamos la contraseña
-                $password =$this->input->post('password') ;
-                $hash = $this->bcrypt->hash($password);
-                $users->setPassword($hash);
+                $users->setPassword($this->input->post('password'));
                 $users->setEmail($this->input->post('email'));
                 // Guardamos el objeto Users en la base de datos
                 $this->doctrine->em->persist($users);
@@ -98,22 +137,6 @@ class Registro extends CI_Controller {
             }       
         }
     }
-    //Función que me controla que las contraseñas tengan al menos 8 digitos
-    public function password_check($str){
-        if($str==null){
-            $this->form_validation->set_message('password_check', 'El campo %s no puede estar vacío');
-            return FALSE; 
-        }
-        elseif (strlen ($str)<=7)
-        {
-            $this->form_validation->set_message('password_check', 'El campo %s no puede tener menos de 8 caracteres');
-            return FALSE;
-        }
-        else
-        {
-            return TRUE;
-        }
-    } 
     //Función que me controla que las contraseñas sean iguales
     public function confirmarpassword_check($str){
         if($str==null){
@@ -183,6 +206,6 @@ class Registro extends CI_Controller {
             $this->form_validation->set_message('email_check','El usuario ya está dado de alta ');
             return FALSE;
         }
-    }       
+    } */      
 }
 ?>

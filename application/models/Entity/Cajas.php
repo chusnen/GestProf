@@ -11,6 +11,7 @@ class Cajas
 {
     /**
      * @var integer
+     * @GeneratedValue(strategy="AUTO")
      */
     private $idcaja;
 

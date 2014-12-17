@@ -11,6 +11,7 @@ class TiposIngreso
 {
     /**
      * @var integer
+     * @GeneratedValue(strategy="AUTO")
      */
     private $idtipoingreso;
 
