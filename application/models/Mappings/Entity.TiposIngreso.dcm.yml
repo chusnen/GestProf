@@ -14,6 +14,6 @@ Entity\TiposIngreso:
             type: string
             length: 45
             fixed: false
-            nullable: true
+            nullable: false
             column: Descripcion
     lifecycleCallbacks: {  }

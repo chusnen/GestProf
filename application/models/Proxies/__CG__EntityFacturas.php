@@ -42,12 +42,6 @@ class Facturas extends \Entity\Facturas implements \Doctrine\ORM\Proxy\Proxy
     }
 
     
-    public function setId($id)
-    {
-        $this->__load();
-        return parent::setId($id);
-    }
-
     public function getId()
     {
         if ($this->__isInitialized__ === false) {
@@ -65,9 +59,6 @@ class Facturas extends \Entity\Facturas implements \Doctrine\ORM\Proxy\Proxy
 
     public function getNumero()
     {
-        if ($this->__isInitialized__ === false) {
-            return $this->_identifier["numero"];
-        }
         $this->__load();
         return parent::getNumero();
     }
@@ -168,30 +159,6 @@ class Facturas extends \Entity\Facturas implements \Doctrine\ORM\Proxy\Proxy
         return parent::getTipo();
     }
 
-    public function setIdproveedores(\Entity\Proveedores $idproveedores = NULL)
-    {
-        $this->__load();
-        return parent::setIdproveedores($idproveedores);
-    }
-
-    public function getIdproveedores()
-    {
-        $this->__load();
-        return parent::getIdproveedores();
-    }
-
-    public function setIdcliente(\Entity\Clientes $idcliente = NULL)
-    {
-        $this->__load();
-        return parent::setIdcliente($idcliente);
-    }
-
-    public function getIdcliente()
-    {
-        $this->__load();
-        return parent::getIdcliente();
-    }
-
     public function setIdprofesional(\Entity\Profesional $idprofesional = NULL)
     {
         $this->__load();
@@ -216,10 +183,34 @@ class Facturas extends \Entity\Facturas implements \Doctrine\ORM\Proxy\Proxy
         return parent::getIdcaja();
     }
 
+    public function setIdcliente(\Entity\Clientes $idcliente = NULL)
+    {
+        $this->__load();
+        return parent::setIdcliente($idcliente);
+    }
+
+    public function getIdcliente()
+    {
+        $this->__load();
+        return parent::getIdcliente();
+    }
+
+    public function setIdproveedores(\Entity\Proveedores $idproveedores = NULL)
+    {
+        $this->__load();
+        return parent::setIdproveedores($idproveedores);
+    }
+
+    public function getIdproveedores()
+    {
+        $this->__load();
+        return parent::getIdproveedores();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'numero', 'fecha','descripcion', 'baseimponible', 'iva', 'irpf', 'total', 'rutapdf', 'tipo', 'idproveedores', 'idcliente', 'idprofesional', 'idcaja');
+        return array('__isInitialized__', 'id', 'numero', 'fecha', 'descripcion', 'baseimponible', 'iva', 'irpf', 'total', 'rutapdf', 'tipo', 'idprofesional', 'idcaja', 'idcliente', 'idproveedores');
     }
 
     public function __clone()

@@ -42,12 +42,6 @@ class Profesional extends \Entity\Profesional implements \Doctrine\ORM\Proxy\Pro
     }
 
     
-    public function setIdprofesional($idprofesional)
-    {
-        $this->__load();
-        return parent::setIdprofesional($idprofesional);
-    }
-
     public function getIdprofesional()
     {
         if ($this->__isInitialized__ === false) {
@@ -93,6 +87,18 @@ class Profesional extends \Entity\Profesional implements \Doctrine\ORM\Proxy\Pro
         return parent::getLogin();
     }
 
+    public function setIddelegacion(\Entity\Delegaciones $iddelegacion = NULL)
+    {
+        $this->__load();
+        return parent::setIddelegacion($iddelegacion);
+    }
+
+    public function getIddelegacion()
+    {
+        $this->__load();
+        return parent::getIddelegacion();
+    }
+
     public function setIdpersonas(\Entity\Personas $idpersonas = NULL)
     {
         $this->__load();
@@ -108,7 +114,7 @@ class Profesional extends \Entity\Profesional implements \Doctrine\ORM\Proxy\Pro
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'idprofesional', 'actividad', 'nccc', 'login', 'idpersonas');
+        return array('__isInitialized__', 'idprofesional', 'actividad', 'nccc', 'login', 'iddelegacion', 'idpersonas');
     }
 
     public function __clone()

@@ -11,7 +11,6 @@ class Personas
 {
     /**
      * @var integer
-     * @GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -44,6 +43,11 @@ class Personas
      * @var string
      */
     private $fax;
+
+    /**
+     * @var \Entity\Provincia
+     */
+    private $idprovincia;
 
 
     /**
@@ -192,5 +196,28 @@ class Personas
     public function getFax()
     {
         return $this->fax;
+    }
+
+    /**
+     * Set idprovincia
+     *
+     * @param \Entity\Provincia $idprovincia
+     * @return Personas
+     */
+    public function setIdprovincia(\Entity\Provincia $idprovincia = null)
+    {
+        $this->idprovincia = $idprovincia;
+    
+        return $this;
+    }
+
+    /**
+     * Get idprovincia
+     *
+     * @return \Entity\Provincia 
+     */
+    public function getIdprovincia()
+    {
+        return $this->idprovincia;
     }
 }

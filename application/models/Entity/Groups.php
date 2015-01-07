@@ -11,7 +11,6 @@ class Groups
 {
     /**
      * @var integer
-     * @GeneratedValue(strategy="AUTO")
      */
     private $id;
 

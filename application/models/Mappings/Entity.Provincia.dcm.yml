@@ -14,5 +14,5 @@ Entity\Provincia:
             type: string
             length: 30
             fixed: false
-            nullable: true
+            nullable: false
     lifecycleCallbacks: {  }

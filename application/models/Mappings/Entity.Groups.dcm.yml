@@ -5,7 +5,7 @@ Entity\Groups:
         id:
             id: true
             type: integer
-            unsigned: true
+            unsigned: false
             nullable: false
             generator:
                 strategy: IDENTITY

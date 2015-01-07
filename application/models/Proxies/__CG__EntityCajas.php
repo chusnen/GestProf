@@ -42,12 +42,6 @@ class Cajas extends \Entity\Cajas implements \Doctrine\ORM\Proxy\Proxy
     }
 
     
-    public function setIdcaja($idcaja)
-    {
-        $this->__load();
-        return parent::setIdcaja($idcaja);
-    }
-
     public function getIdcaja()
     {
         if ($this->__isInitialized__ === false) {

@@ -11,7 +11,6 @@ class Gastos
 {
     /**
      * @var integer
-     * @GeneratedValue(strategy="AUTO")
      */
     private $idgastos;
 
@@ -30,19 +29,6 @@ class Gastos
      */
     private $idtipogasto;
 
-
-    /**
-     * Set idgastos
-     *
-     * @param integer $idgastos
-     * @return Gastos
-     */
-    public function setIdgastos($idgastos)
-    {
-        $this->idgastos = $idgastos;
-    
-        return $this;
-    }
 
     /**
      * Get idgastos

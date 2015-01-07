@@ -11,7 +11,6 @@ class DetallesFactura
 {
     /**
      * @var integer
-     * @GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -21,16 +20,31 @@ class DetallesFactura
     private $descripcion;
 
     /**
-     * @var string
+     * @var float
+     */
+    private $preciounitario;
+
+    /**
+     * @var integer
      */
     private $cantidad;
 
     /**
-     * @var string
+     * @var float
      */
     private $descuento;
 
-     /**
+    /**
+     * @var float
+     */
+    private $baseimponible;
+
+    /**
+     * @var float
+     */
+    private $cantidadIva;
+
+    /**
      * @var float
      */
     private $total;
@@ -45,19 +59,6 @@ class DetallesFactura
      */
     private $idiva;
 
-
-    /**
-     * Set id
-     *
-     * @param integer $id
-     * @return DetallesFactura
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    
-        return $this;
-    }
 
     /**
      * Get id
@@ -93,9 +94,32 @@ class DetallesFactura
     }
 
     /**
+     * Set preciounitario
+     *
+     * @param float $preciounitario
+     * @return DetallesFactura
+     */
+    public function setPreciounitario($preciounitario)
+    {
+        $this->preciounitario = $preciounitario;
+    
+        return $this;
+    }
+
+    /**
+     * Get preciounitario
+     *
+     * @return float 
+     */
+    public function getPreciounitario()
+    {
+        return $this->preciounitario;
+    }
+
+    /**
      * Set cantidad
      *
-     * @param string $cantidad
+     * @param integer $cantidad
      * @return DetallesFactura
      */
     public function setCantidad($cantidad)
@@ -108,7 +132,7 @@ class DetallesFactura
     /**
      * Get cantidad
      *
-     * @return string 
+     * @return integer 
      */
     public function getCantidad()
     {
@@ -118,7 +142,7 @@ class DetallesFactura
     /**
      * Set descuento
      *
-     * @param string $descuento
+     * @param float $descuento
      * @return DetallesFactura
      */
     public function setDescuento($descuento)
@@ -131,7 +155,7 @@ class DetallesFactura
     /**
      * Get descuento
      *
-     * @return string 
+     * @return float 
      */
     public function getDescuento()
     {
@@ -139,9 +163,55 @@ class DetallesFactura
     }
 
     /**
+     * Set baseimponible
+     *
+     * @param float $baseimponible
+     * @return DetallesFactura
+     */
+    public function setBaseimponible($baseimponible)
+    {
+        $this->baseimponible = $baseimponible;
+    
+        return $this;
+    }
+
+    /**
+     * Get baseimponible
+     *
+     * @return float 
+     */
+    public function getBaseimponible()
+    {
+        return $this->baseimponible;
+    }
+
+    /**
+     * Set cantidadIva
+     *
+     * @param float $cantidadIva
+     * @return DetallesFactura
+     */
+    public function setCantidadIva($cantidadIva)
+    {
+        $this->cantidadIva = $cantidadIva;
+    
+        return $this;
+    }
+
+    /**
+     * Get cantidadIva
+     *
+     * @return float 
+     */
+    public function getCantidadIva()
+    {
+        return $this->cantidadIva;
+    }
+
+    /**
      * Set total
      *
-     * @param string $total
+     * @param float $total
      * @return DetallesFactura
      */
     public function setTotal($total)
@@ -154,7 +224,7 @@ class DetallesFactura
     /**
      * Get total
      *
-     * @return string 
+     * @return float 
      */
     public function getTotal()
     {

@@ -11,7 +11,6 @@ class Cajas
 {
     /**
      * @var integer
-     * @GeneratedValue(strategy="AUTO")
      */
     private $idcaja;
 
@@ -25,19 +24,6 @@ class Cajas
      */
     private $idforma;
 
-
-    /**
-     * Set idcaja
-     *
-     * @param integer $idcaja
-     * @return Cajas
-     */
-    public function setIdcaja($idcaja)
-    {
-        $this->idcaja = $idcaja;
-    
-        return $this;
-    }
 
     /**
      * Get idcaja

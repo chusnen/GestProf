@@ -15,6 +15,15 @@ Entity\Proveedores:
             fixed: false
             nullable: true
     manyToOne:
+        idprofesional:
+            targetEntity: Profesional
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idprofesional:
+                    referencedColumnName: idprofesional
+            orphanRemoval: false
         idpersona:
             targetEntity: Personas
             cascade: {  }

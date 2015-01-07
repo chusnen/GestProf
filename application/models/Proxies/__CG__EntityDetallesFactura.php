@@ -42,12 +42,6 @@ class DetallesFactura extends \Entity\DetallesFactura implements \Doctrine\ORM\P
     }
 
     
-    public function setId($id)
-    {
-        $this->__load();
-        return parent::setId($id);
-    }
-
     public function getId()
     {
         if ($this->__isInitialized__ === false) {
@@ -67,6 +61,18 @@ class DetallesFactura extends \Entity\DetallesFactura implements \Doctrine\ORM\P
     {
         $this->__load();
         return parent::getDescripcion();
+    }
+
+    public function setPreciounitario($preciounitario)
+    {
+        $this->__load();
+        return parent::setPreciounitario($preciounitario);
+    }
+
+    public function getPreciounitario()
+    {
+        $this->__load();
+        return parent::getPreciounitario();
     }
 
     public function setCantidad($cantidad)
@@ -93,7 +99,31 @@ class DetallesFactura extends \Entity\DetallesFactura implements \Doctrine\ORM\P
         return parent::getDescuento();
     }
 
-       public function setTotal($total)
+    public function setBaseimponible($baseimponible)
+    {
+        $this->__load();
+        return parent::setBaseimponible($baseimponible);
+    }
+
+    public function getBaseimponible()
+    {
+        $this->__load();
+        return parent::getBaseimponible();
+    }
+
+    public function setCantidadIva($cantidadIva)
+    {
+        $this->__load();
+        return parent::setCantidadIva($cantidadIva);
+    }
+
+    public function getCantidadIva()
+    {
+        $this->__load();
+        return parent::getCantidadIva();
+    }
+
+    public function setTotal($total)
     {
         $this->__load();
         return parent::setTotal($total);
@@ -132,7 +162,7 @@ class DetallesFactura extends \Entity\DetallesFactura implements \Doctrine\ORM\P
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'descripcion', 'cantidad', 'descuento','total', 'idfactura', 'idiva');
+        return array('__isInitialized__', 'id', 'descripcion', 'preciounitario', 'cantidad', 'descuento', 'baseimponible', 'cantidadIva', 'total', 'idfactura', 'idiva');
     }
 
     public function __clone()

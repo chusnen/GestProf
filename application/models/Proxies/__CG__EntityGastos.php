@@ -42,12 +42,6 @@ class Gastos extends \Entity\Gastos implements \Doctrine\ORM\Proxy\Proxy
     }
 
     
-    public function setIdgastos($idgastos)
-    {
-        $this->__load();
-        return parent::setIdgastos($idgastos);
-    }
-
     public function getIdgastos()
     {
         if ($this->__isInitialized__ === false) {

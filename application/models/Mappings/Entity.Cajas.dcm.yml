@@ -8,12 +8,14 @@ Entity\Cajas:
             unsigned: false
             nullable: false
             column: idCaja
+            generator:
+                strategy: IDENTITY
         fecha:
             type: string
             length: 45
             fixed: false
-            nullable: true
-    oneToOne:
+            nullable: false
+    manyToOne:
         idforma:
             targetEntity: FormasPago
             cascade: {  }

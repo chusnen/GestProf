@@ -39,4 +39,14 @@ Entity\Personas:
             length: 9
             fixed: false
             nullable: true
+    manyToOne:
+        idprovincia:
+            targetEntity: Provincia
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idprovincia:
+                    referencedColumnName: idProvincia
+            orphanRemoval: false
     lifecycleCallbacks: {  }

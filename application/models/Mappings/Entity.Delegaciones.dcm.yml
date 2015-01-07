@@ -14,6 +14,6 @@ Entity\Delegaciones:
             type: string
             length: 20
             fixed: false
-            nullable: true
+            nullable: false
             column: Poblacion
     lifecycleCallbacks: {  }

@@ -5,20 +5,11 @@ Entity\UsersGroups:
         id:
             id: true
             type: integer
-            unsigned: true
+            unsigned: false
             nullable: false
             generator:
                 strategy: IDENTITY
     manyToOne:
-        group:
-            targetEntity: Groups
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                group_id:
-                    referencedColumnName: id
-            orphanRemoval: false
         user:
             targetEntity: Users
             cascade: {  }
@@ -26,6 +17,15 @@ Entity\UsersGroups:
             inversedBy: null
             joinColumns:
                 user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        group:
+            targetEntity: Groups
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                group_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

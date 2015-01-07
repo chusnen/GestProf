@@ -7,12 +7,23 @@ Entity\Clientes:
             type: integer
             unsigned: false
             nullable: false
+            generator:
+                strategy: IDENTITY
         contacto:
             type: string
             length: 20
             fixed: false
             nullable: true
-    oneToOne:
+    manyToOne:
+        idprofesional:
+            targetEntity: Profesional
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idprofesional:
+                    referencedColumnName: idprofesional
+            orphanRemoval: false
         idpersona:
             targetEntity: Personas
             cascade: {  }

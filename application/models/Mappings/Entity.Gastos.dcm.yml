@@ -7,12 +7,14 @@ Entity\Gastos:
             type: integer
             unsigned: false
             nullable: false
+            generator:
+                strategy: IDENTITY
         descripcion:
             type: string
             length: 45
             fixed: false
             nullable: true
-    oneToOne:
+    manyToOne:
         idcaja:
             targetEntity: Cajas
             cascade: {  }

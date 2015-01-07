@@ -11,7 +11,6 @@ class FormasPago
 {
     /**
      * @var integer
-     * @GeneratedValue(strategy="AUTO")
      */
     private $idformapago;
 

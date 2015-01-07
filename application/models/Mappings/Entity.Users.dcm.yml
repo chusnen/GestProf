@@ -5,7 +5,7 @@ Entity\Users:
         id:
             id: true
             type: integer
-            unsigned: true
+            unsigned: false
             nullable: false
             generator:
                 strategy: IDENTITY
@@ -13,7 +13,7 @@ Entity\Users:
             type: string
             length: 15
             fixed: false
-            nullable: false
+            nullable: true
             column: ip_address
         username:
             type: string
@@ -49,7 +49,7 @@ Entity\Users:
             column: forgotten_password_code
         forgottenPasswordTime:
             type: integer
-            unsigned: true
+            unsigned: false
             nullable: true
             column: forgotten_password_time
         rememberCode:
@@ -60,12 +60,12 @@ Entity\Users:
             column: remember_code
         createdOn:
             type: integer
-            unsigned: true
-            nullable: false
+            unsigned: false
+            nullable: true
             column: created_on
         lastLogin:
             type: integer
-            unsigned: true
+            unsigned: false
             nullable: true
             column: last_login
         active:

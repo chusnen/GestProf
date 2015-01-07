@@ -7,20 +7,23 @@ Entity\Facturas:
             type: integer
             unsigned: false
             nullable: false
+            generator:
+                strategy: IDENTITY
         numero:
-            id: true
             type: string
             length: 20
             fixed: false
             nullable: false
         fecha:
-            type: date
+            type: string
+            length: 60
+            fixed: false
             nullable: false
         descripcion:
             type: string
             length: 60
             fixed: false
-            nullable: false
+            nullable: true
         baseimponible:
             type: float
             nullable: true
@@ -46,25 +49,7 @@ Entity\Facturas:
             length: 45
             fixed: false
             nullable: true
-    oneToOne:
-        idproveedores:
-            targetEntity: Proveedores
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                idproveedores:
-                    referencedColumnName: idproveedores
-            orphanRemoval: false
-        idcliente:
-            targetEntity: Clientes
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                idcliente:
-                    referencedColumnName: idcliente
-            orphanRemoval: false
+    manyToOne:
         idprofesional:
             targetEntity: Profesional
             cascade: {  }
@@ -82,5 +67,23 @@ Entity\Facturas:
             joinColumns:
                 idcaja:
                     referencedColumnName: idCaja
+            orphanRemoval: false
+        idcliente:
+            targetEntity: Clientes
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idcliente:
+                    referencedColumnName: idcliente
+            orphanRemoval: false
+        idproveedores:
+            targetEntity: Proveedores
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idproveedores:
+                    referencedColumnName: idproveedores
             orphanRemoval: false
     lifecycleCallbacks: {  }

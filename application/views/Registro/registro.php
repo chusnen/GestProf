@@ -69,19 +69,39 @@
             <div class="form-group">
                 <label for="telefono" class="control-label col-xs-2" >Telefono:</label>
                 <div class="col-xs-9">
-                    <input name="telefono" id="telefono" type="tel" class="form-control" placeholder="Telefono">
+                    <input name="telefono" id="telefono" type="tel" class="form-control" value="<?php echo set_value('telefono'); ?>" /><?php echo form_error('telefono', '<span class="error">', '</span>'); ?>
                 </div>
             </div>
             <div class="form-group">
                 <label for="fax" class="control-label col-xs-2">Fax:</label>
                 <div class="col-xs-9">
-                    <input name="fax" id="fax" type="tel" class="form-control" placeholder="Fax">
+                    <input name="fax" id="fax" type="tel" class="form-control" value="<?php echo set_value('fax'); ?>" /><?php echo form_error('fax', '<span class="error">', '</span>'); ?>
                 </div>
             </div>
             <div class="form-group">
                 <label for="direccion" class="control-label col-xs-2">Dirección:</label>
                 <div class="col-xs-9">
-                    <textarea name="direccion" id="direccion" rows="2" class="form-control" placeholder="Dirección"></textarea>
+                    <textarea name="direccion" id="direccion" rows="2" class="form-control" value="<?php echo set_value('direccion'); ?>" /><?php echo form_error('direccion', '<span class="error">', '</span>'); ?></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="provincia" class="control-label col-xs-2">Provincia:</label>
+                <div class="col-xs-9">
+                    <select name="provincia" id="provincia" class="form-control">
+                        <?php foreach($provincias as $provincia): ?>
+                        <option value="<?php echo $provincia->getProvincia()?>"><?php echo $provincia->getProvincia()?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+            </div>
+              <div class="form-group">
+                <label for="delegacion" class="control-label col-xs-2">Delegacion/Población:</label>
+                <div class="col-xs-9">
+                    <select name="delegacion" id="delegacion" class="form-control">
+                        <?php foreach($delegaciones as $delegacion): ?>
+                        <option value="<?php echo $delegacion->getPoblacion()?>"><?php echo $delegacion->getPoblacion()?></option>
+                        <?php endforeach ?>
+                    </select>
                 </div>
             </div>
             <div class="form-group">

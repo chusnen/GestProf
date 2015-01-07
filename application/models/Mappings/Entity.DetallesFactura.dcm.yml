@@ -7,34 +7,33 @@ Entity\DetallesFactura:
             type: integer
             unsigned: false
             nullable: false
+            generator:
+                strategy: IDENTITY
         descripcion:
             type: string
             length: 45
             fixed: false
             nullable: true
+        preciounitario:
+            type: float
+            nullable: true
         cantidad:
             type: integer
-            fixed: false
+            unsigned: false
             nullable: true
         descuento:
             type: float
-            fixed: false
             nullable: true
+        baseimponible:
+            type: float
+            nullable: true
+        cantidadIva:
+            type: float
+            nullable: true   
         total:
             type: float
-            fixed: false
             nullable: true
     manyToOne:
-        idiva:
-            targetEntity: Iva
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                idiva:
-                    referencedColumnName: idIva
-            orphanRemoval: false
-    oneToOne:
         idfactura:
             targetEntity: Facturas
             cascade: {  }
@@ -43,5 +42,14 @@ Entity\DetallesFactura:
             joinColumns:
                 idfactura:
                     referencedColumnName: id
+            orphanRemoval: false
+        idiva:
+            targetEntity: Iva
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idiva:
+                    referencedColumnName: idIva
             orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -11,7 +11,6 @@ class Clientes
 {
     /**
      * @var integer
-     * @GeneratedValue(strategy="AUTO")
      */
     private $idcliente;
 
@@ -21,23 +20,15 @@ class Clientes
     private $contacto;
 
     /**
+     * @var \Entity\Profesional
+     */
+    private $idprofesional;
+
+    /**
      * @var \Entity\Personas
      */
     private $idpersona;
 
-
-    /**
-     * Set idcliente
-     *
-     * @param integer $idcliente
-     * @return Clientes
-     */
-    public function setIdcliente($idcliente)
-    {
-        $this->idcliente = $idcliente;
-    
-        return $this;
-    }
 
     /**
      * Get idcliente
@@ -70,6 +61,29 @@ class Clientes
     public function getContacto()
     {
         return $this->contacto;
+    }
+
+    /**
+     * Set idprofesional
+     *
+     * @param \Entity\Profesional $idprofesional
+     * @return Clientes
+     */
+    public function setIdprofesional(\Entity\Profesional $idprofesional = null)
+    {
+        $this->idprofesional = $idprofesional;
+    
+        return $this;
+    }
+
+    /**
+     * Get idprofesional
+     *
+     * @return \Entity\Profesional 
+     */
+    public function getIdprofesional()
+    {
+        return $this->idprofesional;
     }
 
     /**

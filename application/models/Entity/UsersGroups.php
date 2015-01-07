@@ -11,19 +11,18 @@ class UsersGroups
 {
     /**
      * @var integer
-     * @GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var \Entity\Groups
-     */
-    private $group;
 
     /**
      * @var \Entity\Users
      */
     private $user;
+
+    /**
+     * @var \Entity\Groups
+     */
+    private $group;
 
 
     /**
@@ -34,29 +33,6 @@ class UsersGroups
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set group
-     *
-     * @param \Entity\Groups $group
-     * @return UsersGroups
-     */
-    public function setGroup(\Entity\Groups $group = null)
-    {
-        $this->group = $group;
-    
-        return $this;
-    }
-
-    /**
-     * Get group
-     *
-     * @return \Entity\Groups 
-     */
-    public function getGroup()
-    {
-        return $this->group;
     }
 
     /**
@@ -80,5 +56,28 @@ class UsersGroups
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set group
+     *
+     * @param \Entity\Groups $group
+     * @return UsersGroups
+     */
+    public function setGroup(\Entity\Groups $group = null)
+    {
+        $this->group = $group;
+    
+        return $this;
+    }
+
+    /**
+     * Get group
+     *
+     * @return \Entity\Groups 
+     */
+    public function getGroup()
+    {
+        return $this->group;
     }
 }

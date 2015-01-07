@@ -11,7 +11,6 @@ class Proveedores
 {
     /**
      * @var integer
-     * @GeneratedValue(strategy="AUTO")
      */
     private $idproveedores;
 
@@ -19,6 +18,11 @@ class Proveedores
      * @var string
      */
     private $contacto;
+
+    /**
+     * @var \Entity\Profesional
+     */
+    private $idprofesional;
 
     /**
      * @var \Entity\Personas
@@ -57,6 +61,29 @@ class Proveedores
     public function getContacto()
     {
         return $this->contacto;
+    }
+
+    /**
+     * Set idprofesional
+     *
+     * @param \Entity\Profesional $idprofesional
+     * @return Proveedores
+     */
+    public function setIdprofesional(\Entity\Profesional $idprofesional = null)
+    {
+        $this->idprofesional = $idprofesional;
+    
+        return $this;
+    }
+
+    /**
+     * Get idprofesional
+     *
+     * @return \Entity\Profesional 
+     */
+    public function getIdprofesional()
+    {
+        return $this->idprofesional;
     }
 
     /**

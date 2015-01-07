@@ -11,7 +11,6 @@ class Facturas
 {
     /**
      * @var integer
-     * @GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -21,7 +20,7 @@ class Facturas
     private $numero;
 
     /**
-     * @var \DateTime
+     * @var string
      */
     private $fecha;
 
@@ -61,16 +60,6 @@ class Facturas
     private $tipo;
 
     /**
-     * @var \Entity\Proveedores
-     */
-    private $idproveedores;
-
-    /**
-     * @var \Entity\Clientes
-     */
-    private $idcliente;
-
-    /**
      * @var \Entity\Profesional
      */
     private $idprofesional;
@@ -80,19 +69,16 @@ class Facturas
      */
     private $idcaja;
 
+    /**
+     * @var \Entity\Clientes
+     */
+    private $idcliente;
 
     /**
-     * Set id
-     *
-     * @param integer $id
-     * @return Facturas
+     * @var \Entity\Proveedores
      */
-    public function setId($id)
-    {
-        $this->id = $id;
-    
-        return $this;
-    }
+    private $idproveedores;
+
 
     /**
      * Get id
@@ -130,7 +116,7 @@ class Facturas
     /**
      * Set fecha
      *
-     * @param \DateTime $fecha
+     * @param string $fecha
      * @return Facturas
      */
     public function setFecha($fecha)
@@ -143,7 +129,7 @@ class Facturas
     /**
      * Get fecha
      *
-     * @return \DateTime 
+     * @return string
      */
     public function getFecha()
     {
@@ -312,52 +298,6 @@ class Facturas
     }
 
     /**
-     * Set idproveedores
-     *
-     * @param \Entity\Proveedores $idproveedores
-     * @return Facturas
-     */
-    public function setIdproveedores(\Entity\Proveedores $idproveedores = null)
-    {
-        $this->idproveedores = $idproveedores;
-    
-        return $this;
-    }
-
-    /**
-     * Get idproveedores
-     *
-     * @return \Entity\Proveedores 
-     */
-    public function getIdproveedores()
-    {
-        return $this->idproveedores;
-    }
-
-    /**
-     * Set idcliente
-     *
-     * @param \Entity\Clientes $idcliente
-     * @return Facturas
-     */
-    public function setIdcliente(\Entity\Clientes $idcliente = null)
-    {
-        $this->idcliente = $idcliente;
-    
-        return $this;
-    }
-
-    /**
-     * Get idcliente
-     *
-     * @return \Entity\Clientes 
-     */
-    public function getIdcliente()
-    {
-        return $this->idcliente;
-    }
-
-    /**
      * Set idprofesional
      *
      * @param \Entity\Profesional $idprofesional
@@ -401,5 +341,51 @@ class Facturas
     public function getIdcaja()
     {
         return $this->idcaja;
+    }
+
+    /**
+     * Set idcliente
+     *
+     * @param \Entity\Clientes $idcliente
+     * @return Facturas
+     */
+    public function setIdcliente(\Entity\Clientes $idcliente = null)
+    {
+        $this->idcliente = $idcliente;
+    
+        return $this;
+    }
+
+    /**
+     * Get idcliente
+     *
+     * @return \Entity\Clientes 
+     */
+    public function getIdcliente()
+    {
+        return $this->idcliente;
+    }
+
+    /**
+     * Set idproveedores
+     *
+     * @param \Entity\Proveedores $idproveedores
+     * @return Facturas
+     */
+    public function setIdproveedores(\Entity\Proveedores $idproveedores = null)
+    {
+        $this->idproveedores = $idproveedores;
+    
+        return $this;
+    }
+
+    /**
+     * Get idproveedores
+     *
+     * @return \Entity\Proveedores 
+     */
+    public function getIdproveedores()
+    {
+        return $this->idproveedores;
     }
 }

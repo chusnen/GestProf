@@ -42,12 +42,6 @@ class Clientes extends \Entity\Clientes implements \Doctrine\ORM\Proxy\Proxy
     }
 
     
-    public function setIdcliente($idcliente)
-    {
-        $this->__load();
-        return parent::setIdcliente($idcliente);
-    }
-
     public function getIdcliente()
     {
         if ($this->__isInitialized__ === false) {
@@ -69,6 +63,18 @@ class Clientes extends \Entity\Clientes implements \Doctrine\ORM\Proxy\Proxy
         return parent::getContacto();
     }
 
+    public function setIdprofesional(\Entity\Profesional $idprofesional = NULL)
+    {
+        $this->__load();
+        return parent::setIdprofesional($idprofesional);
+    }
+
+    public function getIdprofesional()
+    {
+        $this->__load();
+        return parent::getIdprofesional();
+    }
+
     public function setIdpersona(\Entity\Personas $idpersona = NULL)
     {
         $this->__load();
@@ -84,7 +90,7 @@ class Clientes extends \Entity\Clientes implements \Doctrine\ORM\Proxy\Proxy
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'idcliente', 'contacto', 'idpersona');
+        return array('__isInitialized__', 'idcliente', 'contacto', 'idprofesional', 'idpersona');
     }
 
     public function __clone()

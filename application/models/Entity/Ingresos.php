@@ -11,7 +11,6 @@ class Ingresos
 {
     /**
      * @var integer
-     * @GeneratedValue(strategy="AUTO")
      */
     private $idingresos;
 
@@ -30,19 +29,6 @@ class Ingresos
      */
     private $idtipoingreso;
 
-
-    /**
-     * Set idingresos
-     *
-     * @param integer $idingresos
-     * @return Ingresos
-     */
-    public function setIdingresos($idingresos)
-    {
-        $this->idingresos = $idingresos;
-    
-        return $this;
-    }
 
     /**
      * Get idingresos

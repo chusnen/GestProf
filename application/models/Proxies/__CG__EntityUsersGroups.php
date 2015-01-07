@@ -51,18 +51,6 @@ class UsersGroups extends \Entity\UsersGroups implements \Doctrine\ORM\Proxy\Pro
         return parent::getId();
     }
 
-    public function setGroup(\Entity\Groups $group = NULL)
-    {
-        $this->__load();
-        return parent::setGroup($group);
-    }
-
-    public function getGroup()
-    {
-        $this->__load();
-        return parent::getGroup();
-    }
-
     public function setUser(\Entity\Users $user = NULL)
     {
         $this->__load();
@@ -75,10 +63,22 @@ class UsersGroups extends \Entity\UsersGroups implements \Doctrine\ORM\Proxy\Pro
         return parent::getUser();
     }
 
+    public function setGroup(\Entity\Groups $group = NULL)
+    {
+        $this->__load();
+        return parent::setGroup($group);
+    }
+
+    public function getGroup()
+    {
+        $this->__load();
+        return parent::getGroup();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'group', 'user');
+        return array('__isInitialized__', 'id', 'user', 'group');
     }
 
     public function __clone()

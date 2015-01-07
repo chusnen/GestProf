@@ -11,7 +11,6 @@ class Iva
 {
     /**
      * @var integer
-     * @GeneratedValue(strategy="AUTO")
      */
     private $idiva;
 

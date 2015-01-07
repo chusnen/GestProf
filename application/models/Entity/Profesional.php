@@ -11,7 +11,6 @@ class Profesional
 {
     /**
      * @var integer
-     * @GeneratedValue(strategy="AUTO")
      */
     private $idprofesional;
 
@@ -31,23 +30,15 @@ class Profesional
     private $login;
 
     /**
+     * @var \Entity\Delegaciones
+     */
+    private $iddelegacion;
+
+    /**
      * @var \Entity\Personas
      */
     private $idpersonas;
 
-
-    /**
-     * Set idprofesional
-     *
-     * @param integer $idprofesional
-     * @return Profesional
-     */
-    public function setIdprofesional($idprofesional)
-    {
-        $this->idprofesional = $idprofesional;
-    
-        return $this;
-    }
 
     /**
      * Get idprofesional
@@ -126,6 +117,29 @@ class Profesional
     public function getLogin()
     {
         return $this->login;
+    }
+
+    /**
+     * Set iddelegacion
+     *
+     * @param \Entity\Delegaciones $iddelegacion
+     * @return Profesional
+     */
+    public function setIddelegacion(\Entity\Delegaciones $iddelegacion = null)
+    {
+        $this->iddelegacion = $iddelegacion;
+    
+        return $this;
+    }
+
+    /**
+     * Get iddelegacion
+     *
+     * @return \Entity\Delegaciones 
+     */
+    public function getIddelegacion()
+    {
+        return $this->iddelegacion;
     }
 
     /**

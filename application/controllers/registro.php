@@ -9,12 +9,20 @@ class Registro extends CI_Controller {
 		$this->load->helper('form');
 	}
     function index(){
-      $this->load->view('header');
-     // $this->load->view('navigator');
-      $this->load->view('container'); 
-     // $this->load->view('content'); 
-      $this->load->view('Registro/registro');      
-      $this->load->view('footer');
+        $repositorioProvincia=$this->doctrine->em->getRepository('Entity\Provincia');
+        $provincias=$repositorioProvincia->findAll(); 
+
+        $repositorioDelegaciones=$this->doctrine->em->getRepository('Entity\Delegaciones');
+        $delegaciones=$repositorioDelegaciones->findAll();  
+        $data=array('provincias'=>$provincias,
+            'delegaciones'=>$delegaciones
+            );
+        $this->load->view('header');
+        // $this->load->view('navigator');
+        $this->load->view('container'); 
+        // $this->load->view('content'); 
+        $this->load->view('Registro/registro',$data);      
+        $this->load->view('footer');
     }
     public function create(){
         //Compruebo que los datos del formulario se han enviado por post
@@ -64,7 +72,11 @@ class Registro extends CI_Controller {
 		        $usersGroup->setUser($users);
 		        //Guardamos el objeto UsersGroup en la base de datos
             	$this->doctrine->em->persist($usersGroup);
-
+                
+                //creo el repositorio Provincia
+                $repositorioProvincia=$this->doctrine->em->getRepository('Entity\Provincia');
+                $idprovincia=$repositorioProvincia->findOneByProvincia($this->input->post('provincia'));                
+                
                 //Creo la persona
    		        $personas=new Entity\Personas;
                 $personas->setNif($this->input->post('nif'));
@@ -73,16 +85,22 @@ class Registro extends CI_Controller {
                 $personas->setTelefono($this->input->post('telefono'));
                 $personas->setDireccion($this->input->post('direccion'));
                 $personas->setFax($this->input->post('fax'));
+                $personas->setIdprovincia($idprovincia);
                 // Guardamos el objeto Persona en la base de datos
                 $this->doctrine->em->persist($personas);
-
+                
+                //creo el repositorio Delegaciones
+                $repositorioDelegaciones=$this->doctrine->em->getRepository('Entity\Delegaciones');
+                $iddelegaciones=$repositorioDelegaciones->findOneByPoblacion($this->input->post('delegacion'));  
+                
                 //Creo al profesional
         		$profesional=new Entity\Profesional;
                 $profesional->setActividad($this->input->post('actividad'));
                 $profesional->setNccc($this->input->post('nccb'));
                 $profesional->setIdpersonas($personas);
-                $profesional->setLogin($users);        
-                // Guardamos el objeto Profesional en la base de datos
+                $profesional->setLogin($users);
+                $profesional->setIddelegacion($iddelegaciones);       
+               // Guardamos el objeto Profesional en la base de datos
             	$this->doctrine->em->persist($profesional);
 
                 //Volcamos los datos en la base de datos y limpiamos la caché

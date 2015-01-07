@@ -19,7 +19,7 @@ Entity\Profesional:
             length: 45
             fixed: false
             nullable: true
-    oneToOne:
+    manyToOne:
         login:
             targetEntity: Users
             cascade: {  }
@@ -28,6 +28,15 @@ Entity\Profesional:
             joinColumns:
                 login:
                     referencedColumnName: id
+            orphanRemoval: false
+        iddelegacion:
+            targetEntity: Delegaciones
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                iddelegacion:
+                    referencedColumnName: idDelegacion
             orphanRemoval: false
         idpersonas:
             targetEntity: Personas

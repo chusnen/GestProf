@@ -123,10 +123,22 @@ class Personas extends \Entity\Personas implements \Doctrine\ORM\Proxy\Proxy
         return parent::getFax();
     }
 
+    public function setIdprovincia(\Entity\Provincia $idprovincia = NULL)
+    {
+        $this->__load();
+        return parent::setIdprovincia($idprovincia);
+    }
+
+    public function getIdprovincia()
+    {
+        $this->__load();
+        return parent::getIdprovincia();
+    }
+
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'nif', 'nombre', 'apellidos', 'telefono', 'direccion', 'fax');
+        return array('__isInitialized__', 'id', 'nif', 'nombre', 'apellidos', 'telefono', 'direccion', 'fax', 'idprovincia');
     }
 
     public function __clone()

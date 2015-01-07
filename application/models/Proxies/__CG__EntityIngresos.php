@@ -42,12 +42,6 @@ class Ingresos extends \Entity\Ingresos implements \Doctrine\ORM\Proxy\Proxy
     }
 
     
-    public function setIdingresos($idingresos)
-    {
-        $this->__load();
-        return parent::setIdingresos($idingresos);
-    }
-
     public function getIdingresos()
     {
         if ($this->__isInitialized__ === false) {
