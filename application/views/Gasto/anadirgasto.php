@@ -8,7 +8,7 @@
             <div class="form-group">
                 <label for="fecha" class="control-label col-xs-2">Fecha:</label>
                 <div class="col-xs-9">
-                    <input name="fecha" id="fecha" type="text" class="form-control" value="<?php echo set_value('fecha'); ?>" /><?php echo form_error('fecha', '<span class="error">', '</span>'); ?>
+                   <input type="date" name="fecha" step="1" min="2014-01-01" required="required" value="<?php echo set_value('fecha'); ?>" /><?php echo form_error('fecha', '<span class="error">', '</span>'); ?>
                 </div>
             </div>
             <div class="form-group">

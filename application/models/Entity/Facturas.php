@@ -388,4 +388,5 @@ class Facturas
     {
         return $this->idproveedores;
     }
+        
 }
