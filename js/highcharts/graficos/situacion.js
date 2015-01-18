@@ -1,13 +1,9 @@
 $(function () {
-    // var ingresojs = '<?php echo $ingresos; ?>' ;
-    //  var gastojs = '<?php echo $gastos; ?>' ;
-    //  //.write("VariableJS = " + ingresojs);
-  // '<?php echo $ingresos; ?>'
-  //jQuery.getJSON("controllers/charts.php");
+    
   jQuery.each(data, function(key, val)
         {
-                       //Aqui viene toda la logica de que harias con estos datos
-                       alert("la clave es: "+key+" y el valor es: "+val);
+        //Aqui viene toda la logica
+        alert("la clave es: "+key+" y el valor es: "+val);
         });  
     $('#container').highcharts({
         chart: {

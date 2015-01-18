@@ -20,32 +20,32 @@ class DetallesFactura
     private $descripcion;
 
     /**
-     * @var float
+     * @var decimal
      */
     private $preciounitario;
 
     /**
-     * @var integer
-     */
+     * @var int
+    */
     private $cantidad;
 
     /**
-     * @var float
+     * @var decimal
      */
     private $descuento;
 
     /**
-     * @var float
+     * @var decimal
      */
     private $baseimponible;
 
     /**
-     * @var float
+     * @var decimal
      */
     private $cantidadIva;
 
     /**
-     * @var float
+     * @var decimal
      */
     private $total;
 
@@ -96,7 +96,7 @@ class DetallesFactura
     /**
      * Set preciounitario
      *
-     * @param float $preciounitario
+     * @param decimal $preciounitario
      * @return DetallesFactura
      */
     public function setPreciounitario($preciounitario)
@@ -109,7 +109,7 @@ class DetallesFactura
     /**
      * Get preciounitario
      *
-     * @return float 
+     * @return decimal 
      */
     public function getPreciounitario()
     {
@@ -165,7 +165,7 @@ class DetallesFactura
     /**
      * Set baseimponible
      *
-     * @param float $baseimponible
+     * @param decimal $baseimponible
      * @return DetallesFactura
      */
     public function setBaseimponible($baseimponible)
@@ -178,7 +178,7 @@ class DetallesFactura
     /**
      * Get baseimponible
      *
-     * @return float 
+     * @return decimal 
      */
     public function getBaseimponible()
     {
@@ -188,7 +188,7 @@ class DetallesFactura
     /**
      * Set cantidadIva
      *
-     * @param float $cantidadIva
+     * @param decimal $cantidadIva
      * @return DetallesFactura
      */
     public function setCantidadIva($cantidadIva)
@@ -201,7 +201,7 @@ class DetallesFactura
     /**
      * Get cantidadIva
      *
-     * @return float 
+     * @return decimal 
      */
     public function getCantidadIva()
     {
@@ -211,7 +211,7 @@ class DetallesFactura
     /**
      * Set total
      *
-     * @param float $total
+     * @param decimal $total
      * @return DetallesFactura
      */
     public function setTotal($total)
@@ -224,7 +224,7 @@ class DetallesFactura
     /**
      * Get total
      *
-     * @return float 
+     * @return decimal 
      */
     public function getTotal()
     {

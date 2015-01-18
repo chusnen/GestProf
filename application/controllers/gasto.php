@@ -1,4 +1,4 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Gasto extends CI_Controller {
 	public function _construct(){
 		parent::__construct();
@@ -41,7 +41,9 @@ class Gasto extends CI_Controller {
             $this->load->view('footer');
         }
     }  
-}       
+} 
+/* Fin gasto.php */
+/* Localizacion: ./application/controllers/gasto.php */      
 ?>
 
       

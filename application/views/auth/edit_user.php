@@ -3,9 +3,10 @@
 <p><?php echo lang('edit_user_subheading');?></p>
 
 <div id="infoMessage"><?php echo $message;?></div>
-
-<?php echo form_open(uri_string());?>
-
+ <?php 
+  $attributes = array('class' => 'form-horizontal', 'id' => 'gestionusuarios');
+  echo form_open(uri_string(),$attributes);//le indico el controlador
+  ?>
       <p>
             <?php echo lang('edit_user_fname_label', 'first_name');?> <br />
             <?php echo form_input($first_name);?>

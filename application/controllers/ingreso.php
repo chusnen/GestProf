@@ -1,4 +1,4 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Ingreso extends CI_Controller {
 	public function _construct(){
 		parent::__construct();
@@ -41,7 +41,9 @@ class Ingreso extends CI_Controller {
             $this->load->view('footer');
         }
     }  
-}       
+}
+/* Fin ingreso.php */
+/* Localizacion: ./application/controllers/ingreso.php */       
 ?>
 
       

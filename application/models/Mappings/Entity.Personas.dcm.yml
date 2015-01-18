@@ -13,17 +13,17 @@ Entity\Personas:
             type: string
             length: 9
             fixed: false
-            nullable: true
+            nullable: false
         nombre:
             type: string
             length: 20
             fixed: false
-            nullable: true
+            nullable: false
         apellidos:
             type: string
             length: 20
             fixed: false
-            nullable: true
+            nullable: false
         telefono:
             type: string
             length: 9

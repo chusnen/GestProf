@@ -1,4 +1,4 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
@@ -121,7 +121,10 @@ class Pdfs extends CI_Controller {
             $html .="<td class='total'>".$detalle->getTotal()." €</td></tr>";     
             //$html .= "<tr><td class='id'>" . $detalle->getDescripcion() . "</td><td class='localidad'>" . $detalle->getCantidad (). "</td></tr>";
         }
-        $html .="<tr><td></td><td></td><td></td><td></td><td>Total</td><td>".$factura->getTotal()." €</td></tr>"; 
+        $html .="<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>"; 
+        $html .="<tr><td></td><td></td><td></td><td></td><td>Base Imponible:</td><td>".$factura->getBaseImponible()." €</td></tr>"; 
+        $html .="<tr><td></td><td></td><td></td><td></td><td>Iva:</td><td>".$factura->getIva()." €</td></tr>"; 
+        $html .="<tr><td></td><td></td><td></td><td></td><td>Total:</td><td>".$factura->getTotal()." €</td></tr>"; 
         $html .= "</table></div>";
  
 // Imprimimos el texto con writeHTMLCell()
@@ -134,3 +137,6 @@ class Pdfs extends CI_Controller {
         $pdf->Output('ejemplo','I');
     }
 }
+/* Fin pdfs.php */
+/* Localizacion: ./application/controllers/pdfs.php */
+?>

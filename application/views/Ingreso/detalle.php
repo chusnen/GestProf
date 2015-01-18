@@ -1,23 +1,4 @@
 <div id="centralregistro">
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#registro").submit(function(){
-                $.ajax({
-                    url: $(this).attr("action"),
-                    type: $(this).attr("method"),
-                    data: $(this).serialize(),
-                    beforeSend:function(){
-                        $(".loader").show();
-                    },
-                    success:function(){
-                        $(".loader").fadeOut("slow");
-                    }
-                });
- 
-            });
-            return false;
-        });
-    </script>
     <?php 
     $attributes = array('class' => 'form-horizontal', 'id' => 'detalles');
     echo form_open('ingreso/detalle',$attributes);//le indico el controlador

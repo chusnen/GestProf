@@ -1,4 +1,4 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Pages extends CI_Controller {
 	public function view($page = 'home'){
 		if ( ! file_exists('application/views/pages/'.$page.'.php')){
@@ -11,5 +11,7 @@ class Pages extends CI_Controller {
 	$this->load->view('templates/footer', $data);
 	}
 }
+/* Fin pages.php */
+/* Localizacion: ./application/controllers/pages.php */
 ?>
 		

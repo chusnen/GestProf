@@ -25,18 +25,18 @@ Entity\Facturas:
             fixed: false
             nullable: true
         baseimponible:
-            type: float
+            type: decimal
             nullable: true
             column: baseImponible
         iva:
-            type: float
+            type: decimal
             nullable: true
         irpf:
             type: integer
             unsigned: false
             nullable: true
         total:
-            type: float
+            type: decimal
             nullable: true
         rutapdf:
             type: string

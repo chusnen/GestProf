@@ -1,4 +1,4 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Registro extends CI_Controller {
 	public function _construct(){
 		parent::__construct();
@@ -39,6 +39,8 @@ class Registro extends CI_Controller {
             $this->form_validation->set_rules('email', 'Email', 'callback_email_check');
             $this->form_validation->set_rules('nif', 'Nif', 'callback_nif_check');
             $this->form_validation->set_rules('nombre', 'Nombre', 'required|xss_clean');
+            $this->form_validation->set_rules('provincia', 'Provincia', 'callback_provincia_check');
+            $this->form_validation->set_rules('delegacion', 'Delegacion', 'callback_delegacion_check');
             $this->form_validation->set_rules('apellidos', 'Apellidos', 'required|xss_clean');
             $this->form_validation->set_rules('actividad', 'Actividad', 'required|xss_clean');
             //comprobamos si los datos son correctos, el comodín %s nos mostrará el nombre del campo
@@ -201,6 +203,27 @@ class Registro extends CI_Controller {
             $this->form_validation->set_message('email_check','El usuario ya está dado de alta ');
             return FALSE;
         }
-    }       
+    }
+     public function provincia_check($provincia) {
+        if($provincia==""){
+            $this->form_validation->set_message('provincia_check','Tienes que seleccionar una provincia');
+            return FALSE;
+        }
+        else{
+            return TRUE;
+        }
+    }   
+     public function delegacion_check($delegacion) {
+        if($delegacion==""){
+            $this->form_validation->set_message('delegacion_check','Tienes que seleccionar una delegación');
+            return FALSE;
+        }
+        else{
+            return TRUE;
+        }
+    }          
 }
+/* Fin registro.php */
+/* Localizacion: ./application/controllers/registro.php */
 ?>
+

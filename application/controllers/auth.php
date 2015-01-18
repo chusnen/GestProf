@@ -8,28 +8,19 @@ class Auth extends CI_Controller {
 		$this->load->database();
 		$this->load->library(array('ion_auth','form_validation'));
 		$this->load->helper(array('url','language'));
-
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
-
 		$this->lang->load('auth');
-
+		$this->load->library('doctrine');
 	}
-
 	//redirect if needed, otherwise display the user list
-	function index()
-	{
-
-        //$this->load->view('navigator');
-
-         
-		if (!$this->ion_auth->logged_in())
-		{
-			//redirect them to the login page
-			
-        
-        redirect('header','refresh');
-			redirect('auth/login', 'refresh');
-		
+	function index(){
+        //$this->load->view('navigator');         
+		if (!$this->ion_auth->logged_in()){
+			//redirect them to the login page       
+        	redirect('header','refresh');
+        	redirect('container','refresh');
+        	redirect('navigatoradministrador','refresh');
+			redirect('auth/login', 'refresh');		
 		}
 		elseif (!$this->ion_auth->is_admin()) //remove this elseif if you want to enable this for non-admins
 		{
@@ -40,19 +31,14 @@ class Auth extends CI_Controller {
 		{
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-
 			//list the users
 			$this->data['users'] = $this->ion_auth->users()->result();
 			foreach ($this->data['users'] as $k => $user)
 			{
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
-			$this->load->view('header');
-        //$this->load->view('navigator');
-        $this->load->view('container'); 
-
-			$this->_render_page('auth/index', $this->data);
-				
+		
+			$this->_render_page('auth/index', $this->data);				
 		}
 		$this->load->view('footer');
 	}
@@ -62,18 +48,16 @@ class Auth extends CI_Controller {
 	{
 		//$data['usuario']='no loggin';
 		$this->data['title'] = "Login";
-        $this->load->view('header');
-        $this->load->view('container');
+        //$this->load->view('header');
+        //$this->load->view('container');
 		//validate form input
 		$this->form_validation->set_rules('identity', 'Identity', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
-
 		if ($this->form_validation->run() == true)
 		{
 			//check to see if the user is logging in
 			//check for "remember me"
 			$remember = (bool) $this->input->post('remember');
-
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
 			{
 				//if the login is successful
@@ -88,8 +72,7 @@ class Auth extends CI_Controller {
 			else
 			{
 				//if the login was un-successful
-				//redirect them back to the login page
-				
+				//redirect them back to the login page				
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
 				redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
@@ -99,7 +82,6 @@ class Auth extends CI_Controller {
 			//the user is not logging in so display the login page
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-
 			$this->data['identity'] = array('name' => 'identity',
 				'id' => 'identity',
 				'type' => 'text',
@@ -109,7 +91,6 @@ class Auth extends CI_Controller {
 				'id' => 'password',
 				'type' => 'password',
 			);
-
 			$this->_render_page('auth/login', $this->data);
 		}
 			$this->load->view('footer');
@@ -131,7 +112,6 @@ class Auth extends CI_Controller {
 		//cargo mi pie
 		$this->load->view('footer');
 	}
-
 	//change password
 	function change_password()
 	{
@@ -209,7 +189,6 @@ class Auth extends CI_Controller {
 			}
 		}
 	}
-
 	//forgot password
 	function forgot_password()
 	{   
@@ -289,7 +268,6 @@ class Auth extends CI_Controller {
 			//cargo mi pie
 			$this->load->view('footer');
 	}
-
 	//reset password - final step for forgotten password
 	public function reset_password($code = NULL)
 	{
@@ -379,8 +357,6 @@ class Auth extends CI_Controller {
 			redirect("auth/forgot_password", 'refresh');
 		}
 	}
-
-
 	//activate the user
 	function activate($id, $code=false)
 	{
@@ -406,7 +382,6 @@ class Auth extends CI_Controller {
 			redirect("auth/forgot_password", 'refresh');
 		}
 	}
-
 	//deactivate the user
 	function deactivate($id = NULL)
 	{
@@ -451,16 +426,14 @@ class Auth extends CI_Controller {
 			//redirect them back to the auth page
 			redirect('auth', 'refresh');
 		}
+		//cargo mi pie
+			$this->load->view('footer');
 	}
-
 	//create a new user
 	function create_user()
 	{
 		$this->data['title'] = "Create User";
-		//cargo mi cabecera y mi contenedor
-		$this->load->view('header');
-        $this->load->view('container');
-
+	
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
 		{
 			redirect('auth', 'refresh');
@@ -551,14 +524,13 @@ class Auth extends CI_Controller {
 			//cargo mi pie
 			$this->load->view('footer');
 	}
-
 	//edit a user
 	function edit_user($id)
 	{
 		$this->data['title'] = "Edit User";
 		//cargo mi cabecera y mi contenedor
-		$this->load->view('header');
-        $this->load->view('container');
+		//$this->load->view('header');
+        //$this->load->view('container');
 
 		if (!$this->ion_auth->logged_in() || (!$this->ion_auth->is_admin() && !($this->ion_auth->user()->row()->id == $id)))
 		{
@@ -623,9 +595,8 @@ class Auth extends CI_Controller {
 						}
 
 					}
-				}
-				
-			//check to see if we are updating the user
+				}				
+				//check to see if we are updating the user
 			   if($this->ion_auth->update($user->id, $data))
 			    {
 			    	//redirect them back to the admin page if admin, or to the base url if non admin
@@ -657,18 +628,14 @@ class Auth extends CI_Controller {
 				
 			}
 		}
-
 		//display the edit user form
 		$this->data['csrf'] = $this->_get_csrf_nonce();
-
 		//set the flash data error message if there is one
 		$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
-
 		//pass the user to the view
 		$this->data['user'] = $user;
 		$this->data['groups'] = $groups;
 		$this->data['currentGroups'] = $currentGroups;
-
 		$this->data['first_name'] = array(
 			'name'  => 'first_name',
 			'id'    => 'first_name',
@@ -708,14 +675,11 @@ class Auth extends CI_Controller {
 		//cargo mi pie
 		$this->load->view('footer');
 	}
-
 	// create a new group
 	function create_group()
 	{
 		$this->data['title'] = $this->lang->line('create_group_title');
-		//cargo mi cabecera y mi contenedor
-		$this->load->view('header');
-        $this->load->view('container');
+		
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
 		{
 			redirect('auth', 'refresh');
@@ -760,7 +724,6 @@ class Auth extends CI_Controller {
 			$this->load->view('footer');
 		}
 	}
-
 	//edit a group
 	function edit_group($id)
 	{ 
@@ -772,20 +735,15 @@ class Auth extends CI_Controller {
 		{
 			redirect('auth', 'refresh');
 		}
-
 		$this->data['title'] = $this->lang->line('edit_group_title');
-
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
 		{
 			redirect('auth', 'refresh');
 		}
-
 		$group = $this->ion_auth->group($id)->row();
-
 		//validate form input
 		$this->form_validation->set_rules('group_name', $this->lang->line('edit_group_validation_name_label'), 'required|alpha_dash|xss_clean');
 		$this->form_validation->set_rules('group_description', $this->lang->line('edit_group_validation_desc_label'), 'xss_clean');
-
 		if (isset($_POST) && !empty($_POST))
 		{
 			if ($this->form_validation->run() === TRUE)
@@ -803,13 +761,10 @@ class Auth extends CI_Controller {
 				redirect("auth", 'refresh');
 			}
 		}
-
 		//set the flash data error message if there is one
 		$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
-
 		//pass the user to the view
 		$this->data['group'] = $group;
-
 		$this->data['group_name'] = array(
 			'name'  => 'group_name',
 			'id'    => 'group_name',
@@ -822,13 +777,10 @@ class Auth extends CI_Controller {
 			'type'  => 'text',
 			'value' => $this->form_validation->set_value('group_description', $group->description),
 		);
-
 		$this->_render_page('auth/edit_group', $this->data);
 		//cargo mi pie
 		$this->load->view('footer');
 	}
-
-
 	function _get_csrf_nonce()
 	{
 		$this->load->helper('string');
@@ -836,10 +788,8 @@ class Auth extends CI_Controller {
 		$value = random_string('alnum', 20);
 		$this->session->set_flashdata('csrfkey', $key);
 		$this->session->set_flashdata('csrfvalue', $value);
-
 		return array($key => $value);
 	}
-
 	function _valid_csrf_nonce()
 	{
 		if ($this->input->post($this->session->flashdata('csrfkey')) !== FALSE &&
@@ -852,21 +802,18 @@ class Auth extends CI_Controller {
 			return FALSE;
 		}
 	}
-
 	function _render_page($view, $data=null, $render=false)
 	{
 		//cargo mi cabecera y mi contenedor
 		$this->load->view('header');
         $this->load->view('container');
-
 		$this->viewdata = (empty($data)) ? $this->data: $data;
-
 		$view_html = $this->load->view($view, $this->viewdata, $render);
-
 		if (!$render) return $view_html;
-
 		//cargo mi pie
 		$this->load->view('footer');
 	}
-
 }
+/* Fin auth.php */
+/* Localizacion: ./application/controllers/auth.php */
+?>

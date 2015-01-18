@@ -14,8 +14,8 @@
             <div class="form-group">
                 <label for="formapago" class="control-label col-xs-2">Forma de Pago:</label>
                 <div class="col-xs-9">
-                    <select name="formapago" id="formapago" class="form-control">
-                        <option value="3" selected="selected">Selecciona la Forma de Pago</option><!-- Pongo por defecto al contado -->
+                    <select name="formapago" id="formapago" class="form-control"><?php echo form_error('formapago', '<span class="error">', '</span>'); ?>
+                        <option value="0" selected="selected">Selecciona la Forma de Pago</option><!-- Pongo por defecto 0 para controlar el error -->
                         <?php foreach($formaspago as $formapago): ?>
                         <option value="<?php echo $formapago->getIdFormapago()?>"><?php echo $formapago->getDescripcion()?></option>
                         <?php endforeach ?>
@@ -25,7 +25,7 @@
              <div class="form-group">
                 <label for="tipoingreso" class="control-label col-xs-2">Tipo de Ingreso:</label>
                 <div class="col-xs-9">
-                    <select name="tipoingreso" id="tipoingreso" class="form-control">
+                    <select name="tipoingreso" id="tipoingreso" class="form-control"><?php echo form_error('tipoingreso', '<span class="error">', '</span>'); ?>
                         <option value="0" selected="selected">Selecciona el Tipo de Ingreso</option><!-- Pongo por defecto 0 -->
                         <?php foreach($tiposingreso as $tipoingreso): ?>
                         <option value="<?php echo $tipoingreso->getIdTipoingreso()?>"><?php echo $tipoingreso->getDescripcion()?></option>
@@ -36,7 +36,7 @@
             <br>
             <div class="form-group">
                 <div class="col-xs-offset-2 col-xs-9">
-                    <input type='hidden' name='numero' value="<?php echo $numero?>"><!-- Obtengo el id de factura para añadir los detalle a esa factura -->
+                    <input type='hidden' name='idfactura' value="<?php echo $numero?>"><!-- Obtengo el id de factura para añadir los detalle a esa factura -->
                     <input name="enviar" id="enviar" type="submit" class="btn btn-primary" value="Enviar">
                     <input id="limpiar" type="reset" class="btn btn-default" value="Limpiar">
                 </div>

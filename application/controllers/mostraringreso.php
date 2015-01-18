@@ -1,4 +1,4 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Mostraringreso extends CI_Controller {
 	public function _construct(){
 		parent::__construct();
@@ -55,7 +55,10 @@ class Mostraringreso extends CI_Controller {
                 // $this->load->view('content');
                 $this->load->view('Ingreso/factura');
                 $this->load->view('footer');          
-                }
             }
         }
     }
+}
+/* Fin mostraringreso.php */
+/* Localizacion: ./application/controllers/mostraringreso.php */
+?>

@@ -88,7 +88,7 @@ class Clasefichero130 {
 	    return $minoracion;
     }
     public function porcentaje($rendimientoneto){
-    	$porcentaje=$rendimientoneto-(($rendimientoneto*20)/100);
+    	$porcentaje=($rendimientoneto*20)/100;
 		return $porcentaje;
     } 
     //Quita los acentos

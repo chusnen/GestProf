@@ -4,14 +4,11 @@ class Mostrargraficos extends CI_Controller {
 
 	function __construct()
 	{
-		parent::__construct();
-		
+		parent::__construct();		
 		$this->load->helper('url');
 		//Cargo la libreria doctrine para poder usar la bd mapeada a objetos
-		$this->load->library('doctrine');
-				
-	}	
-	
+		$this->load->library('doctrine');				
+	}		
 	function index()
 	{
 		$email=$this->session->userdata('identity');         
@@ -25,8 +22,7 @@ class Mostrargraficos extends CI_Controller {
             $this->load->view('Ingreso/login');
             $this->load->view('footer');            
         }
-        else{
-        	
+        else{        	
             $this->load->view('header');            
 		   	$this->load->view('container');
 		    $this->load->view('navigator');       
@@ -36,4 +32,6 @@ class Mostrargraficos extends CI_Controller {
 		}		
 	}
 }
+/* Fin mostrargraficos.php */
+/* Localizacion: ./application/controllers/mostrargraficos.php */
 ?>

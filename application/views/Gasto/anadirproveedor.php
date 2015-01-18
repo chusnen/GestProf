@@ -33,11 +33,11 @@
                 <label for="provincia" class="control-label col-xs-2">Provincia:</label>
                 <div class="col-xs-9">
                     <select name="provincia" id="provincia" class="form-control">
-                        <option value="99" selected="selected">Selecciona la Provincia</option>
+                        <option value="0" selected="selected">Selecciona la Provincia</option>
                         <?php foreach($provincias as $provincia): ?>
                         <option value="<?php echo $provincia->getIdprovincia()?>"><?php echo $provincia->getProvincia()?></option>
                         <?php endforeach ?>
-                    </select>
+                    </select><?php echo form_error('provincia', '<span class="error">', '</span>'); ?>
                 </div>
             </div>   
             <div class="form-group">

@@ -1,23 +1,3 @@
-<div id="centralregistro">
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#registro").submit(function(){
-                $.ajax({
-                    url: $(this).attr("action"),
-                    type: $(this).attr("method"),
-                    data: $(this).serialize(),
-                    beforeSend:function(){
-                        $(".loader").show();
-                    },
-                    success:function(){
-                        $(".loader").fadeOut("slow");
-                    }
-                });
- 
-            });
-            return false;
-        });
-    </script>
     <?php 
     $attributes = array('class' => 'form-horizontal', 'id' => 'registro');
     echo form_open('registro/create',$attributes);
@@ -88,20 +68,22 @@
                 <label for="provincia" class="control-label col-xs-2">Provincia:</label>
                 <div class="col-xs-9">
                     <select name="provincia" id="provincia" class="form-control">
+                        <option value="" selected="selected">Selecciona la Provincia</option>
                         <?php foreach($provincias as $provincia): ?>
                         <option value="<?php echo $provincia->getProvincia()?>"><?php echo $provincia->getProvincia()?></option>
                         <?php endforeach ?>
-                    </select>
+                    </select><?php echo form_error('provincia', '<span class="error">', '</span>'); ?>
                 </div>
             </div>
               <div class="form-group">
                 <label for="delegacion" class="control-label col-xs-2">Delegacion/Población:</label>
                 <div class="col-xs-9">
                     <select name="delegacion" id="delegacion" class="form-control">
+                        <option value="" selected="selected">Selecciona la Población o Delegación</option>
                         <?php foreach($delegaciones as $delegacion): ?>
                         <option value="<?php echo $delegacion->getPoblacion()?>"><?php echo $delegacion->getPoblacion()?></option>
                         <?php endforeach ?>
-                    </select>
+                    </select><?php echo form_error('delegacion', '<span class="error">', '</span>'); ?>
                 </div>
             </div>
             <div class="form-group">

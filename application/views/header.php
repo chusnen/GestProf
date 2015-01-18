@@ -46,18 +46,22 @@
             <ul class="nav navbar-nav">            	
 	          	
                 <li><a href="<?php echo base_url(); ?>">Inicio</a></li>
-                <?php  if ($this->ion_auth->logged_in() and $this->session->userdata('identity')!='admin@admin.com'){   
-                echo '<li><a href="<?php echo base_url(); ?>ingreso">Ingresos</a></li>';
-                echo '<li><a href="<?php echo base_url(); ?>gasto">Gastos</a></li>';
-                echo '<li><a href="<?php echo base_url(); ?>mostrargraficos">Analisis</a></li>';
-                echo '<li><a href="<?php echo base_url(); ?>mostrarfichero130">Modelos</a></li>';
-                 }?>
-                <?php if($this->session->userdata('identity')=='admin@admin.com'){
-                echo  '<li><a href="<?php echo base_url(); ?>administrar">Administracion</a></li>';   
-                }?>     
+                <?php  
+                if ($this->ion_auth->logged_in()){ 
+                    if(!$this->ion_auth->is_admin()){
+                        $this->load->view('encabezadologeado'); 
+                        
+                    }
+                    else{
+                        $this->load->view('encabezadoadministrador') ;
+                         
+                    }
+                }
+                ?>
+                  
             </ul>
                 <?php  if ($this->ion_auth->logged_in()) $this->load->view('login') ?>
-              </ul>          		 
+                   		 
 	           	</div><!--/.nav-collapse -->	           	
 	        </div>
 	    </nav>

@@ -13,26 +13,26 @@ Entity\DetallesFactura:
             type: string
             length: 45
             fixed: false
-            nullable: true
+            nullable: false
         preciounitario:
-            type: float
-            nullable: true
+            type: decimal
+            nullable: false
         cantidad:
             type: integer
             unsigned: false
-            nullable: true
+            nullable: false
         descuento:
-            type: float
+            type: decimal
             nullable: true
         baseimponible:
-            type: float
-            nullable: true
+            type: decimal
+            nullable: false
         cantidadIva:
-            type: float
+            type: decimal
             nullable: true   
         total:
-            type: float
-            nullable: true
+            type: decimal
+            nullable: false
     manyToOne:
         idfactura:
             targetEntity: Facturas

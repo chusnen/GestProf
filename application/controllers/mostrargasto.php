@@ -1,4 +1,4 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Mostrargasto extends CI_Controller {
 	public function _construct(){
 		parent::__construct();
@@ -46,9 +46,12 @@ class Mostrargasto extends CI_Controller {
                 $this->load->view('container');
                 $this->load->view('navigator'); 
                 // $this->load->view('content');
-                $this->load->view('Ingreso/facturagasto');
+                $this->load->view('Ingreso/factura');
                 $this->load->view('footer');          
-                }
             }
         }
     }
+}
+/* Fin mostrargasto.php */
+/* Localizacion: ./application/controllers/mostrargasto.php */
+?>

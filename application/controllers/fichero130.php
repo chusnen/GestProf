@@ -29,14 +29,15 @@ class Fichero130 extends CI_Controller {
 	        { 
 	        	//creamos nuestras reglas de validación, https://ellislab.com/codeigniter/user-guide/libraries/form_validation.html#rulereference 
 	            //required=campo obligatorio||valid_email=validar correo||xss_clean=evitamos inyecciones de código
-	            $this->form_validation->set_rules('ano', 'ano', 'required|xss_clean');
-	            $this->form_validation->set_rules('trimestre', 'trimestre', 'required|xss_clean');
-	            $this->form_validation->set_rules('ano', 'ano', 'callback_ano_check'); 
+	            $this->form_validation->set_rules('ano', 'ano', 'required|xss_clean|integer|exact_length[4]');
+	            $this->form_validation->set_rules('trimestre', 'trimestre', 'required|xss_clean|is_natural_no_zero');
 	            $this->form_validation->set_rules('trimestre', 'trimestre', 'callback_trimestre_check');    
 	            //comprobamos si los datos son correctos, el comodín %s nos mostrará el nombre del campo
 	            //que ha fallado 
 	            $this->form_validation->set_message('required', 'El  %s es requerido');
-	            $this->form_validation->set_message('valid_email', 'El %s no es válido');
+	            $this->form_validation->set_message('integer', 'El campo %s tiene que ser un número entero');
+	            $this->form_validation->set_message('exact_length', 'El Año no es válido');
+	            $this->form_validation->set_message('is_natural_no_zero', 'El Trimestre tiene que ser una número entre 1 y 4');
 	            //si el formulario no pasa la validación lo devolvemos a la página
 	            //pero esta vez le mostramos los errores al lado de cada campo
 	            if($this->form_validation->run() == FALSE){              
@@ -55,9 +56,8 @@ class Fichero130 extends CI_Controller {
             		$profesional=$repositorioprofesionales->findOneByLogin($usuarioAutentificado->getId());                        
 					//Hacemos los calculos llamando a las funciones que he creado
                     if($this->input->post('trimestre')==1){
-
                     	$ingresoscomputables=$this->clasefichero130->calcularingresoscomputables('1',$this->input->post('ano'),$profesional->getIdprofesional());
-                    	$gastoscomputables=calculargastoscomputables('1',$this->input->post('ano'),$profesional->getIdprofesional());
+                    	$gastoscomputables=$this->clasefichero130->calculargastoscomputables('1',$this->input->post('ano'),$profesional->getIdprofesional());
                     	$rendimientoneto=$ingresoscomputables-$gastoscomputables;
                     	$minoracion=$this->clasefichero130->minoracion($rendimientoneto);
                     	if($rendimientoneto<0){
@@ -74,7 +74,7 @@ class Fichero130 extends CI_Controller {
                     //fin 1er trimestre
                     elseif($this->input->post('trimestre')==2){
                     	$ingresoscomputables=$this->clasefichero130->calcularingresoscomputables('2',$this->input->post('ano'),$profesional->getIdprofesional());
-                    	$gastoscomputables=calculargastoscomputables('2',$this->input->post('ano'),$profesional->getIdprofesional());
+                    	$gastoscomputables=$this->clasefichero130->calculargastoscomputables('2',$this->input->post('ano'),$profesional->getIdprofesional());
                     	$rendimientoprimertrimestre=$this->clasefichero130->calcularingresoscomputables('1',$this->input->post('ano'),$profesional->getIdprofesional())-$this->clasefichero130->calculargastoscomputables('1',$this->input->post('ano'),$profesional->getIdprofesional());
                     	$rendimientoneto=$ingresoscomputables-$gastoscomputables;
                     	$minoracion=$this->clasefichero130->minoracion($rendimientonetoprimertrimestre);
@@ -247,6 +247,16 @@ class Fichero130 extends CI_Controller {
 			}
 		}
 	}
-	
+	public function trimestre_check($trimestre){
+		if($trimestre<=0 || $trimestre>4){
+			$this->form_validation->set_message('trimestre_check','El Trimestre debe ser un numero entre 1 y 4');
+            return FALSE;
+		}
+		else{
+			return TRUE;
+		}
+	}	
 }
+/* Fin fichero130.php */
+/* Localizacion: ./application/controllers/fichero130.php */
 ?>

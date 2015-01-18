@@ -1,4 +1,4 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Anadirfacturagasto extends CI_Controller {
 	public function _construct(){
 		parent::__construct();
@@ -31,24 +31,22 @@ class Anadirfacturagasto extends CI_Controller {
                         'ivas'=>$ivas,
                         'proveedores'=>$proveedores);      
             $idusuario=$usuarioAutentificado->getId();
-            //$repositorioProfesional=$this->doctrine->em->getRepository('Entity\Profesional');
             $profesional=$repositorioprofesionales->findOneByLogin($idusuario);
             $personas=$profesional->getIdpersonas();//obtengo el objeto personas
-            //$repositorioClientes=$this->doctrine->em->getRepository('Entity\Clientes');
-            //$clientes=$repositorioClientes->findByIdprofesional($profesional->getIdprofesional());
             $repositorioFacturas=$this->doctrine->em->getRepository('Entity\Facturas');           
             if(isset($_POST['enviar'])){               
                 //creamos nuestras reglas de validación, https://ellislab.com/codeigniter/user-guide/libraries/form_validation.html#rulereference 
                 //required=campo obligatorio||valid_email=validar correo||xss_clean=evitamos inyecciones de código
-                $this->form_validation->set_rules('numero', 'numero', 'required|xss_clean');
-                $this->form_validation->set_rules('proveedor', 'proveedor', 'required|xss_clean');
-                $this->form_validation->set_rules('fecha', 'fecha', 'required|xss_clean');
-                $this->form_validation->set_rules('numero', 'numero', 'callback_numero_check');//llamamos a la funcion
+                $this->form_validation->set_rules('numero', 'Numero de Factura', 'required|xss_clean');
+                $this->form_validation->set_rules('proveedor', 'Proveedor', 'required|xss_clean');
+                $this->form_validation->set_rules('proveedor', 'Proveedor', 'callback_proveedor_check');
+                $this->form_validation->set_rules('fecha', 'Fecha', 'required|xss_clean');
+                $this->form_validation->set_rules('numero', 'Numero', 'callback_numero_check');//llamamos a la funcion
                 //que nos comprueba si el profesional tiene una factura con el mismo número     
                 //comprobamos si los datos son correctos, el comodín %s nos mostrará el nombre del campo
                 //que ha fallado 
-                $this->form_validation->set_message('required', 'El  %s es requerido');
-                $this->form_validation->set_message('valid_email', 'El %s no es válido');
+                $this->form_validation->set_message('required', 'El  campo %s es requerido');
+                $this->form_validation->set_message('valid_email', 'El campo %s no es válido');
                 //si el formulario no pasa la validación lo devolvemos a la página
                 //pero esta vez le mostramos los errores al lado de cada campo
                 if($this->form_validation->run() == FALSE){
@@ -56,7 +54,7 @@ class Anadirfacturagasto extends CI_Controller {
                     $this->load->view('container');
                     $this->load->view('navigator'); 
                     //$this->load->view('content');
-                    $this->load->view('Gasto/facturagasto',$data);
+                    $this->load->view('Gasto/factura',$data);
                     $this->load->view('footer');                       
                     //en caso de que la validación sea correcta cogemos las variables y las envíamos
                     //al modelo
@@ -66,6 +64,7 @@ class Anadirfacturagasto extends CI_Controller {
                     //sólo añado el detalle
                     $factura=new Entity\Facturas;
                     $factura->setNumero($this->input->post('numero'));
+                    $factura->setDescripcion($this->input->post('descripcion'));
                     $factura->setIdprofesional($profesional);
                     $factura->setIdproveedores($repositorioProveedores->findOneByIdproveedores($this->input->post('proveedor')));
                     $factura->setFecha($this->input->post('fecha'));
@@ -83,13 +82,13 @@ class Anadirfacturagasto extends CI_Controller {
                     $this->load->view('Gasto/anadirdetalle',$data);
                     $this->load->view('footer');       
                 }
-            }
+            }//Si no se envian las variables vuelvo a la página de las facturas
             else{                    
                 $this->load->view('header');            
                 $this->load->view('container');
                 $this->load->view('navigator'); 
                 // $this->load->view('content');
-                $this->load->view('Gasto/facturagasto',$data);
+                $this->load->view('Gasto/factura',$data);
                 $this->load->view('footer');          
             }
         }
@@ -102,21 +101,17 @@ class Anadirfacturagasto extends CI_Controller {
             return FALSE;
         }
         else{
-            // $email=$this->session->userdata('identity');         
-            // $repositorioUsers = $this->doctrine->em->getRepository('Entity\Users');
-            // $usuarioAutentificado = $repositorioUsers->findOneByEmail($email);
-            // $idusuario=$usuarioAutentificado->getId();
-            // $repositorioProfesional=$this->doctrine->em->getRepository('Entity\Profesional');
-            // $profesional=$repositorioProfesional->findOneByLogin($idusuario);
-            //$repositorioProveedores=$this->doctrine->em->getRepository('Entity\Proveedores');
-//$proveedores=$repositorioProveedores->findByIdprofesional($profesional->getIdprofesional());
+            $email=$this->session->userdata('identity');         
+            $repositorioUsers = $this->doctrine->em->getRepository('Entity\Users');
+            $usuarioAutentificado = $repositorioUsers->findOneByEmail($email);
+            $idusuario=$usuarioAutentificado->getId();
+            $repositorioProfesional=$this->doctrine->em->getRepository('Entity\Profesional');
+            $profesional=$repositorioProfesional->findOneByLogin($idusuario);
             $repositorioFacturas = $this->doctrine->em->getRepository('Entity\Facturas');
-            // Buscamos si existe el email en la bd
-            //echo $numero;
-            //echo $proveedores->getIdproveedores();
+            // Buscamos si existe el numero en la bd
             $numero = $repositorioFacturas->findOneBy(array('numero' => $numero,
                                                             'idcliente' => NULL,
-                                                            'idproveedores' => $this->input->post('proveedor')));
+                                                            'idprofesional' => $profesional->getIdprofesional()));
             if($numero==null){
                 //Si $numero está vacío es porque no lo ha encontrado una factura con el mismo numero
                 //Importante se busca por numero y por idproveedores porque un profesional no puede tener
@@ -130,5 +125,16 @@ class Anadirfacturagasto extends CI_Controller {
             }
         }
     }
+    public function proveedor_check($proveedor) {
+        if($proveedor==0){
+            $this->form_validation->set_message('proveedor_check','Tienes que seleccionar un proveedor');
+            return FALSE;
+        }
+        else{
+            return TRUE;
+        }
+    }   
 }
+/* Fin anadirfacturagasto.php */
+/* Localizacion: ./application/controllers/anadirfacturagasto.php */
 ?>

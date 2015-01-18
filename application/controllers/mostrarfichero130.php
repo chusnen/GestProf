@@ -17,4 +17,6 @@ class Mostrarfichero130 extends CI_Controller {
 		$this->load->view('footer');   
 	}
 }
+/* Fin mostrarfichero130.php */
+/* Localizacion: ./application/controllers/mostrarfichero130.php */
 ?>

@@ -1,4 +1,4 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Anadirproveedor extends CI_Controller {
 	public function _construct(){
 		parent::__construct();
@@ -10,10 +10,7 @@ class Anadirproveedor extends CI_Controller {
     function index(){
     	$email=$this->session->userdata('identity');         
         $repositorioUsers = $this->doctrine->em->getRepository('Entity\Users');
-        $usuarioAutentificado = $repositorioUsers->findOneByEmail($email); 
-        $repositorioProvincia=$this->doctrine->em->getRepository('Entity\Provincia');
-        $provincias=$repositorioProvincia->findAll();
-        $data=array('provincias'=>$provincias);
+        $usuarioAutentificado = $repositorioUsers->findOneByEmail($email);       
         //Compruebo que los datos del formulario se han enviado por post
         if(is_null($usuarioAutentificado)){
             $this->load->view('header');        
@@ -24,17 +21,21 @@ class Anadirproveedor extends CI_Controller {
             $this->load->view('footer');            
         }
         else{
+        	$repositorioProvincia=$this->doctrine->em->getRepository('Entity\Provincia');
+       		$provincias=$repositorioProvincia->findAll();
+        	$data=array('provincias'=>$provincias);
 	        if(isset($_POST['enviar']))
 	        { 
 	            //creamos nuestras reglas de validación, https://ellislab.com/codeigniter/user-guide/libraries/form_validation.html#rulereference 
 	            //required=campo obligatorio||valid_email=validar correo||xss_clean=evitamos inyecciones de código
-	            $this->form_validation->set_rules('nif', 'nif', 'required|xss_clean');
-	            $this->form_validation->set_rules('nombre', 'nombre', 'required|xss_clean');
-	            $this->form_validation->set_rules('nif', 'nif', 'callback_nif_check');     
+	            $this->form_validation->set_rules('nif', 'Nif', 'required|xss_clean');
+	            $this->form_validation->set_rules('apellidos', 'Apellidos', 'required|xss_clean');
+	            $this->form_validation->set_rules('nombre', 'Nombre', 'required|xss_clean');
+	            $this->form_validation->set_rules('nif', 'Nif', 'callback_nif_check');
+	            $this->form_validation->set_rules('provincia', 'Provincia', 'callback_provincia_check');     
 	            //comprobamos si los datos son correctos, el comodín %s nos mostrará el nombre del campo
 	            //que ha fallado 
-	            $this->form_validation->set_message('required', 'El  %s es requerido');
-	            $this->form_validation->set_message('valid_email', 'El %s no es válido');
+	            $this->form_validation->set_message('required', 'El  campo %s es requerido');
 	            //si el formulario no pasa la validación lo devolvemos a la página
 	            //pero esta vez le mostramos los errores al lado de cada campo
 	            if($this->form_validation->run() == FALSE){
@@ -44,8 +45,7 @@ class Anadirproveedor extends CI_Controller {
 	                $this->load->view('navigator'); 
 	                //$this->load->view('content');
 	                $this->load->view('Gasto/anadirproveedor',$data);
-	                $this->load->view('footer');  
-	                 
+	                $this->load->view('footer');  	                 
 	                //en caso de que la validación sea correcta cogemos las variables y las envíamos
 	                //al modelo
 	            }
@@ -62,8 +62,7 @@ class Anadirproveedor extends CI_Controller {
 	                $provincia=$repositorioProvincia->findOneByIdprovincia($this->input->post('provincia'));
 	                $personas->setIdprovincia($provincia);
 	                // Guardamos el objeto Persona en la base de datos
-	                $this->doctrine->em->persist($personas);
-	                     
+	                $this->doctrine->em->persist($personas);	                     
 	                //obtengo el id del profesional
 	                $repositorioprofesionales=$this->doctrine->em->getRepository('Entity\Profesional');
 	                $profesional=$repositorioprofesionales->findOneByLogin($usuarioAutentificado->getId());                
@@ -73,17 +72,19 @@ class Anadirproveedor extends CI_Controller {
 	                $proveedores->setIdprofesional($profesional);
 	                $proveedores->setContacto($this->input->post('contacto'));   
 	                // Guardamos el objeto Persona en la base de datos
-	                $this->doctrine->em->persist($proveedores);    
-	                    
+	                $this->doctrine->em->persist($proveedores);                    
 	                //Volcamos los datos en la base de datos y limpiamos la caché
 	                $this->doctrine->em->flush();           
 	                //si el modelo hace la inserción en la base de datos nos devolverá a la siguiente url
 	                //en la que según nuestro formulario debe mostrarse el mensaje de confirmación.
+	                $repositorioProveedores=$this->doctrine->em->getRepository('Entity\Proveedores');
+            		$proveedores=$repositorioProveedores->findByIdprofesional($profesional->getIdprofesional());
+            		$data=array('proveedores'=>$proveedores);
 	                $this->load->view('header');            
 	                $this->load->view('container');
 	                $this->load->view('navigator'); 
 	                // $this->load->view('content');
-	                $this->load->view('Registro/enviado');  
+		            $this->load->view('Gasto\factura',$data);  
 	                $this->load->view('footer'); 
 	            }   
 	    	}
@@ -125,5 +126,17 @@ class Anadirproveedor extends CI_Controller {
                 }
             }
         }
-    } 
+    }
+    public function provincia_check($provincia) {
+        if($provincia==0){
+            $this->form_validation->set_message('provincia_check','Por favor indica su provincia');
+            return FALSE;
+        }
+        else{
+           return TRUE;
+        }
+    }  
 }
+/* Fin anadirproveedor.php */
+/* Localizacion: ./application/controllers/anadirproveedor.php */
+?>

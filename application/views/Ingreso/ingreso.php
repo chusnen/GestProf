@@ -7,7 +7,7 @@
 			<li> <a href="#">Actividad: <?php echo $actividad ?></a> </li>
 		</ul>
 	</div>
-	<p><a class="btn btn-primary btn-lg" href="<?php echo base_url(); ?>anadirfactura" role="button">Añadir factura</a></p>
+	<p><a class="btn btn-primary btn-lg" href="<?php echo base_url(); ?>anadirfacturaingreso" role="button">Añadir factura</a></p>
 	<div class="panel panel-default">
    		<div class="panel-heading">Resumen Facturación</div>
 		<table class="table" summary="Resumen Facturas">
@@ -19,9 +19,8 @@
 				    <th scope="col">Cliente</th>
 				    <th scope="col">Base Imponible</th>
 				    <th scope="col">Total</th>
-				    <th scope="col">PDF</th>
 				    <th scope="col">Agregar Pago</th>
-				    <th scope="col">Generar Factura en PFD</th>
+				    <th scope="col">Generar Factura en PDF</th>
 		    	</tr>
 	  		</thead> 
  			<tbody>
@@ -33,11 +32,10 @@
 	                <td><?php echo $factura->getIdcliente()->getIdpersona()->getNombre()?></td> 
 	                <td><?php echo $factura->getBaseImponible()?> €</td>
 	                <td><?php echo $factura->getTotal()?> €</td>
-	                <td><?php echo $factura->getRutaPdf()?></td>
 	                <td><?php 
 	                		if ($factura->getIdcaja() == null) {
 	                			$attributes = array('class' => 'form-horizontal', 'id' => 'pago');
-	                			echo form_open('mostraringreso',$attributes);//le indico el controlador
+	                			echo form_open('anadiringreso',$attributes);//le indico el controlador
 	                			echo "<input name='enviar' id='enviar' type='submit' class='btn btn-primary-xs' value='Agregar Pago'>";
 	                			echo "<input type='hidden' name='idfactura' value='"; 
 	                			echo $factura->getId();
@@ -46,12 +44,9 @@
 	                		}
 	                		else{
 	                			$attributes = array('class' => 'form-horizontal', 'id' => 'pago');
-	                			echo form_open('modificaringreso',$attributes);//le indico el controlador
-	                			echo "<input name='enviar' id='enviar' type='submit' class='btn btn-primary-xs' value='Modificar Pago'>";
-	                			echo "<input type='hidden' name='idfactura' value='";
-	                			echo $factura->getId();
-	                			echo "'>";
-    							echo form_close(); 
+	                			echo form_open('#',$attributes);//le indico el controlador
+	                			echo "<label for='pagado' class='control-label col-xs-2'>Pagado</label>";
+	                			echo form_close(); 
 	                			}
 	                	?> 
 	                	

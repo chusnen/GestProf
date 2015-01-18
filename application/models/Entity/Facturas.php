@@ -30,12 +30,12 @@ class Facturas
     private $descripcion;
 
     /**
-     * @var float
+     * @var dcimal
      */
     private $baseimponible;
 
     /**
-     * @var float
+     * @var decimal
      */
     private $iva;
 
@@ -45,7 +45,7 @@ class Facturas
     private $irpf;
 
     /**
-     * @var float
+     * @var decimal
      */
     private $total;
 
@@ -162,7 +162,7 @@ class Facturas
     /**
      * Set baseimponible
      *
-     * @param float $baseimponible
+     * @param decimal $baseimponible
      * @return Facturas
      */
     public function setBaseimponible($baseimponible)
@@ -175,7 +175,7 @@ class Facturas
     /**
      * Get baseimponible
      *
-     * @return float 
+     * @return decimal 
      */
     public function getBaseimponible()
     {
@@ -185,7 +185,7 @@ class Facturas
     /**
      * Set iva
      *
-     * @param float $iva
+     * @param decimal $iva
      * @return Facturas
      */
     public function setIva($iva)
@@ -198,7 +198,7 @@ class Facturas
     /**
      * Get iva
      *
-     * @return float 
+     * @return decimal 
      */
     public function getIva()
     {
@@ -231,7 +231,7 @@ class Facturas
     /**
      * Set total
      *
-     * @param float $total
+     * @param decimal $total
      * @return Facturas
      */
     public function setTotal($total)
@@ -244,7 +244,7 @@ class Facturas
     /**
      * Get total
      *
-     * @return float 
+     * @return decimal 
      */
     public function getTotal()
     {

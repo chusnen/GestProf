@@ -8,17 +8,24 @@
             <div class="form-group">
                 <label for="numero" class="control-label col-xs-2">Nº Factura:</label>
                 <div class="col-xs-9">
-                    <input name="numero" id="numero" type="text" class="form-control"  id="inputnumero" value="<?php echo set_value('numero'); ?>" /><?php echo form_error('numero', '<span class="error">', '</span>'); ?>
+                    <input name="numero" id="numero" type="text" class="form-control" size="20" value="<?php echo set_value('numero'); ?>" /><?php echo form_error('numero', '<span class="error">', '</span>'); ?>
+                </div>
+            </div>
+             <div class="form-group">
+                <label for="descripcion" class="control-label col-xs-2">Descripcion:</label>
+                <div class="col-xs-9">
+                    <input name="descripcion" id="descripcion" type="text" class="form-control" size="60"  value="<?php echo set_value('descripcion'); ?>" /><?php echo form_error('descripcion', '<span class="error">', '</span>'); ?>
                 </div>
             </div>
             <div class="form-group">
                 <label for="cliente" class="control-label col-xs-2">Proveedor:</label>
                 <div class="col-xs-9">                    
-                    <select name="proveedor" id="proveedor" class="form-control">
+                    <select name="proveedor" id="proveedor" class="form-control" required="required">
+                         <option value="NULL" selected="selected">Selecciona el Proveedor</option><!-- Pongo por defecto nulo -->
                         <?php foreach($proveedores as $proveedor): ?>
                         <option value="<?php echo $proveedor->getIdproveedores()//mando por post el codigo?>"><?php echo $proveedor->getIdpersona()->getNombre()//muestro la descripcion?></option>
                         <?php endforeach ?>
-                    </select> 
+                    </select> <?php echo form_error('proveedor', '<span class="error">', '</span>'); ?>
                     <a class="btn btn-primary btn-xs" href="<?php echo base_url(); ?>mostrarproveedor" role="button">Añadir Proveedor</a>
                 </div>
             </div>

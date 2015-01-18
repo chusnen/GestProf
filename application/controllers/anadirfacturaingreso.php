@@ -1,5 +1,5 @@
-5<?php
-class Anadirfactura extends CI_Controller {
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+class Anadirfacturaingreso extends CI_Controller {
 	public function _construct(){
 		parent::__construct();
         //Cargo la libreria doctrine para poder usar la bd mapeada a objetos
@@ -31,24 +31,23 @@ class Anadirfactura extends CI_Controller {
                         'ivas'=>$ivas,
                         'clientes'=>$clientes);      
             $idusuario=$usuarioAutentificado->getId();
-            //$repositorioProfesional=$this->doctrine->em->getRepository('Entity\Profesional');
             $profesional=$repositorioprofesionales->findOneByLogin($idusuario);
             $personas=$profesional->getIdpersonas();//obtengo el objeto personas
-            //$repositorioClientes=$this->doctrine->em->getRepository('Entity\Clientes');
             $clientes=$repositorioClientes->findByIdprofesional($profesional->getIdprofesional());
             $repositorioFacturas=$this->doctrine->em->getRepository('Entity\Facturas');           
             if(isset($_POST['enviar'])){               
                 //creamos nuestras reglas de validación, https://ellislab.com/codeigniter/user-guide/libraries/form_validation.html#rulereference 
                 //required=campo obligatorio||valid_email=validar correo||xss_clean=evitamos inyecciones de código
-                $this->form_validation->set_rules('numero', 'numero', 'required|xss_clean');
-                $this->form_validation->set_rules('cliente', 'cliente', 'required|xss_clean');
-                $this->form_validation->set_rules('fecha', 'fecha', 'required|xss_clean');
-                $this->form_validation->set_rules('numero', 'numero', 'callback_numero_check');//llamamos a la funcion
+                $this->form_validation->set_rules('numero', 'Numero', 'required|xss_clean');
+                $this->form_validation->set_rules('cliente', 'Cliente', 'required|xss_clean');
+                $this->form_validation->set_rules('cliente', 'Cliente', 'callback_cliente_check');
+                $this->form_validation->set_rules('fecha', 'Fecha', 'required|xss_clean');
+                $this->form_validation->set_rules('numero', 'Numero', 'callback_numero_check');//llamamos a la funcion
                 //que nos comprueba si el profesional tiene una factura con el mismo número     
                 //comprobamos si los datos son correctos, el comodín %s nos mostrará el nombre del campo
                 //que ha fallado 
-                $this->form_validation->set_message('required', 'El  %s es requerido');
-                $this->form_validation->set_message('valid_email', 'El %s no es válido');
+                $this->form_validation->set_message('required', 'El  campo %s es requerido');
+                $this->form_validation->set_message('valid_email', 'El campo %s no es válido');
                 //si el formulario no pasa la validación lo devolvemos a la página
                 //pero esta vez le mostramos los errores al lado de cada campo
                 if($this->form_validation->run() == FALSE){
@@ -66,6 +65,7 @@ class Anadirfactura extends CI_Controller {
                     //sólo añado el detalle
                     $factura=new Entity\Facturas;
                     $factura->setNumero($this->input->post('numero'));
+                    $factura->setDescripcion($this->input->post('descripcion'));
                     $factura->setIdprofesional($profesional);
                     $factura->setIdcliente($repositorioClientes->findOneByIdcliente($this->input->post('cliente')));
                     $factura->setFecha($this->input->post('fecha'));
@@ -124,5 +124,16 @@ class Anadirfactura extends CI_Controller {
             }
         }
     }
+    public function cliente_check($cliente) {
+        if($cliente==0){
+            $this->form_validation->set_message('cliente_check','Tienes que seleccionar un cliente');
+            return FALSE;
+        }
+        else{
+            return TRUE;
+        }
+    }   
 }
+/* Fin anadirfacturaingreso.php */
+/* Localizacion: ./application/controllers/anadirfacturaingreso.php */
 ?>

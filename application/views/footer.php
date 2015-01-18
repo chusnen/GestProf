@@ -1,6 +1,6 @@
 </div>  
 <footer class="navbar-inverse" id="pie" >
-	<strong>ProfGest&copy; 2014 Propiedad de Mª Jesús Díaz Martín</strong>
+	<strong>GestProf&copy; 2014 Propiedad de Mª Jesús Díaz Martín</strong>
 </footer>
  <!-- Bootstrap core JavaScript
     ================================================== -->

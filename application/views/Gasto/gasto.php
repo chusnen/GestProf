@@ -19,7 +19,6 @@
 				    <th scope="col">Proveedor</th>
 				    <th scope="col">Base Imponible</th>
 				    <th scope="col">Total</th>
-				    <th scope="col">PDF</th>
 				    <th scope="col">Agregar Pago</th>
 		    	</tr>
 	  		</thead> 
@@ -32,11 +31,10 @@
 	                <td><?php echo $factura->getIdproveedores()->getIdpersona()->getNombre()?></td> 
 	                <td><?php echo $factura->getBaseImponible()?> €</td>
 	                <td><?php echo $factura->getTotal()?> €</td>
-	                <td><?php echo $factura->getRutaPdf()?></td>
-	                <td><?php 
+		            <td><?php 
 	                		if ($factura->getIdcaja() == null) {
 	                			$attributes = array('class' => 'form-horizontal', 'id' => 'pago');
-	                			echo form_open('mostrargasto',$attributes);//le indico el controlador
+	                			echo form_open('anadirgasto',$attributes);//le indico el controlador
 	                			echo "<input name='enviar' id='enviar' type='submit' class='btn btn-primary-xs' value='Agregar Cobro'>";
 	                			echo "<input type='hidden' name='idfactura' value='"; 
 	                			echo $factura->getId();
@@ -45,11 +43,8 @@
 	                		}
 	                		else{
 	                			$attributes = array('class' => 'form-horizontal', 'id' => 'pago');
-	                			echo form_open('modificargasto',$attributes);//le indico el controlador
-	                			echo "<input name='enviar' id='enviar' type='submit' class='btn btn-primary-xs' value='Modificar Cobro'>";
-	                			echo "<input type='hidden' name='idfactura' value='";
-	                			echo $factura->getId();
-	                			echo "'>";
+	                			echo form_open('#',$attributes);//le indico el controlador
+	                			echo "<label for='pagado' class='control-label col-xs-2'>Pagado</label>";
     							echo form_close(); 
 	                		}
 	                	?> 	                	

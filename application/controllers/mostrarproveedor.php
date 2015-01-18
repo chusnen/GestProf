@@ -1,4 +1,4 @@
-<?php
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Mostrarproveedor extends CI_Controller {
 	public function _construct(){
 		parent::__construct();
@@ -33,4 +33,6 @@ class Mostrarproveedor extends CI_Controller {
         }
     }
 }
+/* Fin mostrarproveedor.php */
+/* Localizacion: ./application/controllers/mostrarproveedor.php */
 ?>
