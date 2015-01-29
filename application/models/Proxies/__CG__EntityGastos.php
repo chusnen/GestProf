@@ -51,18 +51,7 @@ class Gastos extends \Entity\Gastos implements \Doctrine\ORM\Proxy\Proxy
         return parent::getIdgastos();
     }
 
-    public function setDescripcion($descripcion)
-    {
-        $this->__load();
-        return parent::setDescripcion($descripcion);
-    }
-
-    public function getDescripcion()
-    {
-        $this->__load();
-        return parent::getDescripcion();
-    }
-
+   
     public function setIdcaja(\Entity\Cajas $idcaja = NULL)
     {
         $this->__load();
@@ -90,7 +79,7 @@ class Gastos extends \Entity\Gastos implements \Doctrine\ORM\Proxy\Proxy
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'idgastos', 'descripcion', 'idcaja', 'idtipogasto');
+        return array('__isInitialized__', 'idgastos', 'idcaja', 'idtipogasto');
     }
 
     public function __clone()

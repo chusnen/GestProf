@@ -51,17 +51,7 @@ class Ingresos extends \Entity\Ingresos implements \Doctrine\ORM\Proxy\Proxy
         return parent::getIdingresos();
     }
 
-    public function setDescripcion($descripcion)
-    {
-        $this->__load();
-        return parent::setDescripcion($descripcion);
-    }
-
-    public function getDescripcion()
-    {
-        $this->__load();
-        return parent::getDescripcion();
-    }
+   
 
     public function setIdcaja(\Entity\Cajas $idcaja = NULL)
     {
@@ -90,7 +80,7 @@ class Ingresos extends \Entity\Ingresos implements \Doctrine\ORM\Proxy\Proxy
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'idingresos', 'descripcion', 'idcaja', 'idtipoingreso');
+        return array('__isInitialized__', 'idingresos', 'idcaja', 'idtipoingreso');
     }
 
     public function __clone()

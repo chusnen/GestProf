@@ -14,10 +14,7 @@ class Gastos
      */
     private $idgastos;
 
-    /**
-     * @var string
-     */
-    private $descripcion;
+   
 
     /**
      * @var \Entity\Cajas

@@ -9,11 +9,7 @@ Entity\Gastos:
             nullable: false
             generator:
                 strategy: IDENTITY
-        descripcion:
-            type: string
-            length: 45
-            fixed: false
-            nullable: true
+       
     manyToOne:
         idcaja:
             targetEntity: Cajas

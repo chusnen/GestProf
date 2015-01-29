@@ -14,11 +14,7 @@ class Ingresos
      */
     private $idingresos;
 
-    /**
-     * @var string
-     */
-    private $descripcion;
-
+    
     /**
      * @var \Entity\Cajas
      */
