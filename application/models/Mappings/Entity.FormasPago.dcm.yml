@@ -1,0 +1,19 @@
+Entity\FormasPago:
+    type: entity
+    table: formas_pago
+    fields:
+        idformapago:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: idFormaPago
+            generator:
+                strategy: IDENTITY
+        descripcion:
+            type: string
+            length: 45
+            fixed: false
+            nullable: false
+            column: Descripcion
+    lifecycleCallbacks: {  }

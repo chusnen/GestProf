@@ -1,0 +1,32 @@
+Entity\Ingresos:
+    type: entity
+    table: ingresos
+    fields:
+        idingresos:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        
+    manyToOne:
+        idcaja:
+            targetEntity: Cajas
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idCaja:
+                    referencedColumnName: idCaja
+            orphanRemoval: false
+        idtipoingreso:
+            targetEntity: TiposIngreso
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idTipoIngreso:
+                    referencedColumnName: idTipoIngreso
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

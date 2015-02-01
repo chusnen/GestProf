@@ -1,0 +1,32 @@
+Entity\Gastos:
+    type: entity
+    table: gastos
+    fields:
+        idgastos:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+       
+    manyToOne:
+        idcaja:
+            targetEntity: Cajas
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idCaja:
+                    referencedColumnName: idCaja
+            orphanRemoval: false
+        idtipogasto:
+            targetEntity: TiposGasto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idTipoGasto:
+                    referencedColumnName: idTipoGasto
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

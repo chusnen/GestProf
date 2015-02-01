@@ -1,0 +1,89 @@
+Entity\Facturas:
+    type: entity
+    table: facturas
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        numero:
+            type: string
+            length: 20
+            fixed: false
+            nullable: false
+        fecha:
+            type: string
+            length: 60
+            fixed: false
+            nullable: false
+        descripcion:
+            type: string
+            length: 60
+            fixed: false
+            nullable: true
+        baseimponible:
+            type: decimal
+            nullable: true
+            column: baseImponible
+        iva:
+            type: decimal
+            nullable: true
+        irpf:
+            type: integer
+            unsigned: false
+            nullable: true
+        total:
+            type: decimal
+            nullable: true
+        rutapdf:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+            column: rutaPdf
+        tipo:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+    manyToOne:
+        idprofesional:
+            targetEntity: Profesional
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idprofesional:
+                    referencedColumnName: idprofesional
+            orphanRemoval: false
+        idcaja:
+            targetEntity: Cajas
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idcaja:
+                    referencedColumnName: idCaja
+            orphanRemoval: false
+        idcliente:
+            targetEntity: Clientes
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idcliente:
+                    referencedColumnName: idcliente
+            orphanRemoval: false
+        idproveedores:
+            targetEntity: Proveedores
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idproveedores:
+                    referencedColumnName: idproveedores
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,21 @@
+Entity\Iva:
+    type: entity
+    table: iva
+    fields:
+        idiva:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: idIva
+            generator:
+                strategy: IDENTITY
+        tipo:
+            type: smallint
+            nullable: false
+        descripcion:
+            type: string
+            length: 20
+            fixed: false
+            nullable: false
+    lifecycleCallbacks: {  }

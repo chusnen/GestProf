@@ -1,0 +1,55 @@
+Entity\DetallesFactura:
+    type: entity
+    table: detalles_factura
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        descripcion:
+            type: string
+            length: 45
+            fixed: false
+            nullable: false
+        preciounitario:
+            type: decimal
+            nullable: false
+        cantidad:
+            type: integer
+            unsigned: false
+            nullable: false
+        descuento:
+            type: decimal
+            nullable: true
+        baseimponible:
+            type: decimal
+            nullable: false
+        cantidadIva:
+            type: decimal
+            nullable: true   
+        total:
+            type: decimal
+            nullable: false
+    manyToOne:
+        idfactura:
+            targetEntity: Facturas
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idfactura:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idiva:
+            targetEntity: Iva
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idiva:
+                    referencedColumnName: idIva
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

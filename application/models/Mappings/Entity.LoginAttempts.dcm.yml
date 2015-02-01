@@ -1,0 +1,27 @@
+Entity\LoginAttempts:
+    type: entity
+    table: login_attempts
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        ipAddress:
+            type: string
+            length: 15
+            fixed: false
+            nullable: false
+            column: ip_address
+        login:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+        time:
+            type: integer
+            unsigned: false
+            nullable: true
+    lifecycleCallbacks: {  }

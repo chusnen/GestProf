@@ -1,0 +1,18 @@
+Entity\Provincia:
+    type: entity
+    table: provincia
+    fields:
+        idprovincia:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: idProvincia
+            generator:
+                strategy: IDENTITY
+        provincia:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+    lifecycleCallbacks: {  }

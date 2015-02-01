@@ -1,0 +1,19 @@
+Entity\TiposGasto:
+    type: entity
+    table: tipos_gasto
+    fields:
+        idtipogasto:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: idTipoGasto
+            generator:
+                strategy: IDENTITY
+        descripcion:
+            type: string
+            length: 45
+            fixed: false
+            nullable: false
+            column: Descripcion
+    lifecycleCallbacks: {  }

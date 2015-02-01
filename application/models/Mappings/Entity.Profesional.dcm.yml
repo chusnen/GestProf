@@ -1,0 +1,50 @@
+Entity\Profesional:
+    type: entity
+    table: profesional
+    fields:
+        idprofesional:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        actividad:
+            type: string
+            length: 45
+            fixed: false
+            nullable: false
+        nccc:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+    manyToOne:
+        login:
+            targetEntity: Users
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                login:
+                    referencedColumnName: id
+            orphanRemoval: false
+        iddelegacion:
+            targetEntity: Delegaciones
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                iddelegacion:
+                    referencedColumnName: idDelegacion
+            orphanRemoval: false
+        idpersonas:
+            targetEntity: Personas
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idpersonas:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
