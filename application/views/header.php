@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
   
+<<<<<<< HEAD
     <title>GestProf</title>
 
     <!-- Bootstrap core CSS -->
@@ -21,6 +22,21 @@
     <script src="/js/bootstrap.js"></script>
     <script src="/js/less.min.js"></script>
     <script src="/js/bootstrap-dropdown.js"></script>
+=======
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/GestProf/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/GestProf/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/GestProf/css/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap core JavaScript y jquery
+    ================================================== -->
+    <script src="/GestProf/js/jquery-1.11.1.js"></script>
+    <script src="/GestProf/js/bootstrap.min.js"></script>
+    <script src="/GestProf/js/bootstrap.js"></script>
+    <script src="/GestProf/js/less.min.js"></script>
+    <script src="/GestProf/js/bootstrap-dropdown.js"></script>
+>>>>>>> 8011f33d8a051de6436db586be2a2cf87510dff8
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]-->
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

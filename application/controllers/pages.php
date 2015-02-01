@@ -13,4 +13,9 @@ class Pages extends CI_Controller {
 }
 /* Fin pages.php */
 /* Localizacion: ./application/controllers/pages.php */
+<<<<<<< HEAD
 ?>	
+=======
+?>
+		
+>>>>>>> 8011f33d8a051de6436db586be2a2cf87510dff8

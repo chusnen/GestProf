@@ -183,4 +183,9 @@ class Anadirdetallegasto extends CI_Controller {
 }
 /* Fin anadirdetallegasto.php */
 /* Localizacion: ./application/controllers/anadirdetallegasto.php */
+<<<<<<< HEAD
 ?>
+=======
+?>
+  
+>>>>>>> 8011f33d8a051de6436db586be2a2cf87510dff8

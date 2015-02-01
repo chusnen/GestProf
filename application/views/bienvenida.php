@@ -1,5 +1,9 @@
 <div id="central">
+<<<<<<< HEAD
 <p> Bienvenidos a la aplicación web GestProf desde aqui podrás gestionar sus impuestos y facturas de manera fácil y desde cualquier lugar ya que todos sus datos estarán alojados en la nube</p>
+=======
+<p> Bienvenidos a la aplicaciíon web GestProf desde aqui podrás gestionar sus impuestos y facturas de manera fácil y desde cualquier lugar ya que todos sus datos estarán alojados en la nube</p>
+>>>>>>> 8011f33d8a051de6436db586be2a2cf87510dff8
 <p>Podrá realizar las siguientes gestiones</p>
 	<ul id="gestiones">
 		<li>Elaborar sus propias Facturas personalizadas</li>

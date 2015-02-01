@@ -225,4 +225,9 @@ class Registro extends CI_Controller {
 }
 /* Fin registro.php */
 /* Localizacion: ./application/controllers/registro.php */
+<<<<<<< HEAD
 ?>
+=======
+?>
+
+>>>>>>> 8011f33d8a051de6436db586be2a2cf87510dff8

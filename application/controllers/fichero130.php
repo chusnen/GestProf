@@ -200,7 +200,11 @@ class Fichero130 extends CI_Controller {
 						$cadena.=str_pad('ENERO',10);
 						$cadena.='2015';
 						print($cadena);
+<<<<<<< HEAD
 						
+=======
+						$this->load->view('Modelos/Fichero');
+>>>>>>> 8011f33d8a051de6436db586be2a2cf87510dff8
 					}
 					else{
 						$nombre=$apellidos;
@@ -241,7 +245,11 @@ class Fichero130 extends CI_Controller {
 						header('Cache-Control: max-age=0');		
 						$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 						$objWriter->save('php://output');
+<<<<<<< HEAD
 												
+=======
+						$this->load->view('Modelos/Fichero');									
+>>>>>>> 8011f33d8a051de6436db586be2a2cf87510dff8
 					}
 				}				
 			}

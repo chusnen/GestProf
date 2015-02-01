@@ -124,7 +124,13 @@ class Fichero303 extends CI_Controller {
 					}
 					$total=$coutadevengada-$coutadeducible;
 					if ($this->input->post('tipodocumento')==0){
+<<<<<<< HEAD
 						
+=======
+						//Mandamos al navegador que genere un fichero de texto para que se guarde en el ordenador cliente
+				        header('Content-type: text/plain');
+						header("Content-Disposition: attachment; filename=\"303.303\"");
+>>>>>>> 8011f33d8a051de6436db586be2a2cf87510dff8
 						//Vamos introduciendo en una cadena toda la codificacion del diseño de registro de hacienda
 						$cadena="<T3030";
 						$cadena.=$this->input->post('ano');
@@ -180,11 +186,16 @@ class Fichero303 extends CI_Controller {
 						$cadena.=$this->input->post('ano');
 						$cadena.=$this->input->post('trimestre');
 						$cadena.='T0000>';
+<<<<<<< HEAD
 						//Mandamos al navegador que genere un fichero de texto para que se guarde en el ordenador cliente
 				        header('Content-type: text/plain');
 						header("Content-Disposition: attachment; filename=303.303");
 						print($cadena);
 						
+=======
+						print($cadena);
+						$this->load->view('Modelos/Fichero');
+>>>>>>> 8011f33d8a051de6436db586be2a2cf87510dff8
 					}
 					else{
 						$nombre=$profesional->getIdpersonas()->getApellidos();
@@ -218,7 +229,11 @@ class Fichero303 extends CI_Controller {
 						header('Cache-Control: max-age=0');		
 						$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 						$objWriter->save('php://output');
+<<<<<<< HEAD
 							
+=======
+						$this->load->view('Modelos/Fichero');		
+>>>>>>> 8011f33d8a051de6436db586be2a2cf87510dff8
 					}
 				}
 			}

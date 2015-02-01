@@ -48,10 +48,17 @@
 $active_group = 'default';
 $active_record = TRUE;
 
+<<<<<<< HEAD
 $db['default']['hostname'] = 'db563614021.db.1and1.com';
 $db['default']['username'] = 'dbo563614021';
 $db['default']['password'] = 'delfines1';
 $db['default']['database'] = 'db563614021';
+=======
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'root';
+$db['default']['password'] = 'delfines1';
+$db['default']['database'] = 'gestprof';
+>>>>>>> 8011f33d8a051de6436db586be2a2cf87510dff8
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

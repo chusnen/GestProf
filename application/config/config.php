@@ -14,7 +14,11 @@
 | path to your installation.
 |
 */
+<<<<<<< HEAD
 $config['base_url']	= 'http://sercoplas.es/';
+=======
+$config['base_url']	= 'http://localhost/GestProf/';
+>>>>>>> 8011f33d8a051de6436db586be2a2cf87510dff8
 
 /*
 |--------------------------------------------------------------------------

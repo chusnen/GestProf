@@ -22,6 +22,12 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome_message');
 	}
 }
+<<<<<<< HEAD
 /* Fin welcome.php */
 /* Localizacion: ./application/controllers/welcome.php */
 ?>
+=======
+
+/* Fin welcome.php */
+/* Localizacion: ./application/controllers/welcome.php */
+>>>>>>> 8011f33d8a051de6436db586be2a2cf87510dff8

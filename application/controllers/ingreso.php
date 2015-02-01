@@ -44,4 +44,11 @@ class Ingreso extends CI_Controller {
 }
 /* Fin ingreso.php */
 /* Localizacion: ./application/controllers/ingreso.php */       
+<<<<<<< HEAD
 ?>
+=======
+?>
+
+      
+
+>>>>>>> 8011f33d8a051de6436db586be2a2cf87510dff8
